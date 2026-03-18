@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanduni G. Hewa — Data Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #00e5c0;
+      --accent2: #7b61ff;
+      --accent3: #ff6b6b;
+      --text: #e8e8f0;
+      --muted: #6b6b8a;
+      --card: #13131c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(0,229,192,0.06); top: -100px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(123,97,255,0.07); bottom: 200px; right: -100px; }
+    .orb-3 { width: 300px; height: 300px; background: rgba(255,107,107,0.04); top: 50%; left: 50%; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-inner { max-width: 900px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,229,192,0.08);
+      border: 1px solid rgba(0,229,192,0.2);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 .name-line { display: block; }
+    .hero h1 .highlight {
+      -webkit-text-stroke: 1.5px var(--accent);
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .cert-badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+    .cert-badge span { color: var(--accent); margin-right: 6px; }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0f;
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: #00ffd5; transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 60px;
+      display: flex;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+    section {
+      padding: 100px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .section-num { font-size: 11px; color: var(--accent); letter-spacing: 2px; }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    #skills { background: var(--surface); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .skill-group {
+      background: var(--card);
+      padding: 32px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .skill-group:hover { border-color: rgba(0,229,192,0.3); }
+
+    .skill-group-icon { font-size: 24px; margin-bottom: 16px; }
+
+    .skill-group-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .skill-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover { color: var(--accent); border-color: rgba(0,229,192,0.3); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 36px;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover { border-color: rgba(0,229,192,0.2); transform: translateY(-4px); }
+
+    .project-num { font-size: 11px; color: var(--muted); letter-spacing: 2px; margin-bottom: 20px; }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .project-desc { color: var(--muted); font-size: 13px; line-height: 1.8; margin-bottom: 24px; }
+
+    .project-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+
+    .stack-tag {
+      background: rgba(123,97,255,0.1);
+      border: 1px solid rgba(123,97,255,0.2);
+      color: #a78bfa;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    .project-highlights { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .project-highlights li {
+      font-size: 12px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .project-highlights li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+    #experience { background: var(--surface); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .exp-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      transition: border-color 0.2s;
+    }
+    .exp-item:hover { border-color: rgba(0,229,192,0.2); }
+
+    .exp-meta { display: flex; flex-direction: column; gap: 8px; }
+    .exp-date { font-size: 11px; color: var(--accent); letter-spacing: 1px; }
+    .exp-company { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--muted); }
+    .exp-location { font-size: 11px; color: var(--muted); }
+
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+
+    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .exp-points li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .exp-points li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 3px; }
+
+    .edu-certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .edu-card, .certs-card { background: var(--card); border: 1px solid var(--border); padding: 36px; }
+
+    .edu-card-title, .certs-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .edu-degree { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .edu-school { color: var(--muted); margin-bottom: 6px; }
+    .edu-gpa {
+      display: inline-block;
+      background: rgba(0,229,192,0.1);
+      border: 1px solid rgba(0,229,192,0.2);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .cert-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cert-item:last-child { border-bottom: none; }
+    .cert-name { font-size: 13px; }
+    .cert-date { font-size: 11px; color: var(--accent); white-space: nowrap; margin-left: 12px; }
+
+    #contact { background: var(--surface); text-align: center; }
+
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+
+    .contact-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .contact-heading .accent { color: var(--accent); }
+    .contact-sub { color: var(--muted); margin-bottom: 48px; font-size: 14px; }
+
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    footer {
+      padding: 28px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-copy { font-size: 11px; color: var(--muted); }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--muted); font-size: 13px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      section { padding: 60px 24px; }
+      .stats-bar { padding: 24px; gap: 32px; flex-wrap: wrap; }
+      .exp-item { grid-template-columns: 1fr; gap: 16px; }
+      .edu-certs-grid { grid-template-columns: 1fr; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <nav>
+    <div class="nav-logo">SGH.</div>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1>
+        <span class="name-line">Sanduni</span>
+        <span class="name-line highlight">G. Hewa</span>
+      </h1>
+      <p class="hero-desc">
+        Data Engineer & Analytics Engineer specializing in Microsoft Fabric, 
+        end-to-end analytical pipelines, and Power BI. Building real-time 
+        intelligence from raw data.
+      </p>
+      <div class="hero-certs">
+        <div class="cert-badge"><span>✦</span> Fabric Analytics Engineer</div>
+        <div class="cert-badge"><span>✦</span> Power BI Data Analyst</div>
+        <div class="cert-badge"><span>✦</span> Azure Fundamentals</div>
+        <div class="cert-badge"><span>✦</span> Buford, GA</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="mailto:sandurash19@gmail.com" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Microsoft Certs</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3.91</span>
+      <span class="stat-label">GPA</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">80%</span>
+      <span class="stat-label">Manual Entry Reduced</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">9</span>
+      <span class="stat-label">Tables Engineered</span>
+    </div>
+  </div>
+
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-icon">⚙️</div>
+        <div class="skill-group-title">Data Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Microsoft Fabric</span>
+          <span class="skill-tag">PySpark</span>
+          <span class="skill-tag">SparkSQL</span>
+          <span class="skill-tag">Dataflows Gen2</span>
+          <span class="skill-tag">T-SQL</span>
+          <span class="skill-tag">ETL/ELT Pipelines</span>
+          <span class="skill-tag">Azure Data Factory</span>
+          <span class="skill-tag">Medallion Architecture</span>
+          <span class="skill-tag">OneLake Shortcuts</span>
+          <span class="skill-tag">Incremental Processing</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon">📊</div>
+        <div class="skill-group-title">Analytics & Modeling</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Direct Lake</span>
+          <span class="skill-tag">Advanced DAX</span>
+          <span class="skill-tag">Star Schema</span>
+          <span class="skill-tag">Calculation Groups</span>
+          <span class="skill-tag">Tabular Editor</span>
+          <span class="skill-tag">Power Query (M)</span>
+          <span class="skill-tag">KPI Tracking</span>
+          <span class="skill-tag">Executive Dashboards</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon">💻</div>
+        <div class="skill-group-title">Languages & Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MS SQL Server</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">VBA Automation</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">R</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT / 001</div>
+        <div class="project-title">E-Commerce Analytics & Data Engineering Platform</div>
+        <p class="project-desc">
+          End-to-end Medallion Architecture built on Microsoft Fabric using the Olist Marketplace 
+          public dataset. Automated ingestion through Gold-layer reporting with sub-second 
+          Power BI dashboards via Direct Lake mode.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Microsoft Fabric</span>
+          <span class="stack-tag">Azure Data Factory</span>
+          <span class="stack-tag">PySpark</span>
+          <span class="stack-tag">T-SQL</span>
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">Direct Lake</span>
+        </div>
+        <ul class="project-highlights">
+          <li>Bronze/Silver/Gold Medallion Architecture in Microsoft Fabric</li>
+          <li>Automated ingestion from Azure Blob Storage via ADF pipelines</li>
+          <li>100% schema consistency across 9 relational tables</li>
+          <li>Gold-layer Star Schema with T-SQL incremental stored procedures</li>
+          <li>Sub-second reporting via Direct Lake mode in Power BI</li>
+        </ul>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT / 002</div>
+        <div class="project-title">Student Progress ETL & Power BI Dashboard</div>
+        <p class="project-desc">
+          Automated ETL workflow to synchronize student data between Excel-based tracking 
+          and web-based management systems, with Power BI dashboards for operational KPI visibility.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">VBA</span>
+          <span class="stack-tag">Selenium</span>
+          <span class="stack-tag">Power BI</span>
+        </div>
+        <ul class="project-highlights">
+          <li>Reduced manual data entry time by 80%</li>
+          <li>Automated validation checks ensuring 100% data accuracy</li>
+          <li>KPI dashboards for management visibility into student trends</li>
+        </ul>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT / 003</div>
+        <div class="project-title">Broadcast Management Database System</div>
+        <p class="project-desc">
+          PostgreSQL relational database for a broadcast management system at Lindenwood University, 
+          with complex schemas, high-frequency SQL queries, and reporting-ready datasets.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Database Design</span>
+        </div>
+        <ul class="project-highlights">
+          <li>Complex relational schema supporting structured operational workflows</li>
+          <li>Tuned SQL queries for high-frequency data validation</li>
+          <li>100% data integrity for real-time system updates</li>
+          <li>Reporting-ready datasets bridging ops data to real-time consumption</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Sep 2025 – Present</span>
+          <span class="exp-company">Mathnasium</span>
+          <span class="exp-location">Buford, GA</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Instructor & IT Assistant</div>
+          <ul class="exp-points">
+            <li>Streamlined an ETL workflow using Excel, VBA, and Selenium to automate synchronization of user-entered data with web-based tracking systems, reducing manual entry time by 80%.</li>
+            <li>Implemented automated validation checks ensuring 100% accuracy across all student progress reports.</li>
+            <li>Designed Power BI dashboards providing management with visibility into student learning trends and operational KPIs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Aug – Dec 2025</span>
+          <span class="exp-company">Lindenwood University</span>
+          <span class="exp-location">St. Charles, MO</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Backend Developer (Internship)</div>
+          <ul class="exp-points">
+            <li>Implemented a PostgreSQL relational database for a broadcast management system, designing complex schemas and table relationships for structured operational workflows.</li>
+            <li>Engineered and tuned complex SQL queries to manage and validate high-frequency operational data, ensuring 100% data integrity.</li>
+            <li>Developed reporting-ready datasets from raw backend sources for a team of 6.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Feb – Mar 2026</span>
+          <span class="exp-company">Self-Directed</span>
+          <span class="exp-location">Buford, GA</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">E-Commerce Data Engineering Platform</div>
+          <ul class="exp-points">
+            <li>Engineered a full Medallion Architecture in Microsoft Fabric, automating ingestion from Azure Blob Storage via Data Factory pipelines.</li>
+            <li>Developed Dataflows Gen2 to clean marketplace data with 100% schema consistency across 9 relational tables.</li>
+            <li>Architected Gold-layer Star Schema using T-SQL Stored Procedures enabling sub-second Direct Lake reporting in Power BI.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-certs-grid">
+      <div class="edu-card reveal">
+        <div class="edu-card-title">Education</div>
+        <div class="edu-degree">B.S. Computer Science</div>
+        <div class="edu-school">Data Science Minor</div>
+        <div class="edu-school">Lindenwood University, Saint Charles, MO</div>
+        <div class="edu-school">Aug 2022 – May 2025</div>
+        <div class="edu-gpa">GPA: 3.91 / 4.0</div>
+      </div>
+      <div class="certs-card reveal">
+        <div class="certs-card-title">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-name">Microsoft Certified: Fabric Analytics Engineer Associate</span>
+            <span class="cert-date">Mar 2026</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Microsoft Certified: Power BI Data Analyst Associate</span>
+            <span class="cert-date">Jan 2026</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Microsoft Certified: Azure Fundamentals</span>
+            <span class="cert-date">Feb 2026</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Agile Software Development: Scrum for Developers</span>
+            <span class="cert-date">Jul 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <h2 class="contact-heading">Let's <span class="accent">work</span><br/>together.</h2>
+      <p class="contact-sub">Open to data engineering, analytics engineering, and Power BI roles.</p>
+      <div class="contact-links">
+        <a href="mailto:sandurash19@gmail.com" class="btn btn-primary">sandurash19@gmail.com</a>
+        <a href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" class="btn btn-secondary">LinkedIn →</a>
+        <a href="tel:+13142158204" class="btn btn-secondary">+1 314 215 8204</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© 2026 Sanduni G. Hewa. All rights reserved.</span>
+    <span class="footer-logo">SGH.</span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
