@@ -247,6 +247,7 @@ h1 .accent { color: var(--accent); }
   font-weight: 800;
   color: var(--accent);
   opacity: 0.3;
+  background: none; /* or remove the background property */
 }
 
 /* ── BUTTONS ── */
