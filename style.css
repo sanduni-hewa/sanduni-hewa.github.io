@@ -393,6 +393,41 @@ h2 {
   gap: 2px;
 }
 
+/* AI & ML card — spans 1 col, Soft Skills spans 2 col */
+.skill-cat:nth-child(4) {
+  grid-column: span 1;
+}
+
+.skill-cat:nth-child(5) {
+  grid-column: span 2;
+}
+
+/* AI & ML tag styling */
+.tag-ai {
+  background: rgba(245,197,24,0.05);
+  border-color: rgba(245,197,24,0.2);
+  color: var(--accent3);
+}
+
+.tag-ai:hover {
+  background: rgba(245,197,24,0.1);
+  border-color: rgba(245,197,24,0.4);
+  color: var(--accent3);
+}
+
+/* soft skill tags */
+.tag-soft {
+  background: rgba(0,170,255,0.05);
+  border-color: rgba(0,170,255,0.18);
+  color: var(--accent2);
+}
+
+.tag-soft:hover {
+  background: rgba(0,170,255,0.1);
+  border-color: rgba(0,170,255,0.4);
+  color: var(--accent2);
+}
+
 .skill-cat {
   background: var(--card);
   padding: 36px;
