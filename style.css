@@ -576,26 +576,29 @@ h2 {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
-  border: 1px solid var(--border);
-  color: var(--muted);
+  border: 1px solid rgba(0,229,160,0.3);
+  color: var(--accent);
   background: transparent;
   transition: all 0.2s;
 }
 
 .btn-project:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #fff;
+  color: #fff;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.08);
 }
 
 .btn-project-demo {
-  border-color: rgba(0,229,160,0.2);
+  background: rgba(0,229,160,0.06);
+  border-color: rgba(0,229,160,0.3);
   color: var(--accent);
 }
 
 .btn-project-demo:hover {
-  background: rgba(0,229,160,0.07);
-  border-color: var(--accent);
+  background: rgba(255,255,255,0.06);
+  border-color: #fff;
+  color: #fff;
 }
 
 .btn-project-icon {
