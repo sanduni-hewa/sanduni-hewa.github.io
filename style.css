@@ -556,6 +556,52 @@ h2 {
   color: var(--accent);
 }
 
+/* ── PROJECT LINKS ── */
+.project-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.btn-project:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-project-demo {
+  border-color: rgba(0,229,160,0.2);
+  color: var(--accent);
+}
+
+.btn-project-demo:hover {
+  background: rgba(0,229,160,0.07);
+  border-color: var(--accent);
+}
+
+.btn-project-icon {
+  font-size: 10px;
+}
+
 /* ── EXPERIENCE ── */
 .timeline { display: flex; flex-direction: column; gap: 2px; }
 
