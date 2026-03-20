@@ -740,3 +740,37 @@ footer {
   .contact-box { padding: 52px 28px; }
   footer { padding: 24px 28px; flex-direction: column; gap: 8px; text-align: center; }
 }
+
+/* ── CERT BADGE IMAGES ── */
+.cert-badge-link {
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+  transition: transform 0.25s;
+}
+
+.cert-badge-link:hover {
+  transform: scale(1.06);
+}
+
+.cert-badge-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.cert-verify {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.cert-card:hover .cert-verify {
+  opacity: 1;
+}
