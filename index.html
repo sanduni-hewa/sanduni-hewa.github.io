@@ -926,16 +926,24 @@
     if (e.key === 'Escape') closeProjectModal();
   });
 
-  function openEarthquakeModal() {
-  document.getElementById('earthquakeModal').classList.add('open');  // match id
+  /* ── earthquake modal ── */
+function openEarthquakeModal() {
+  document.getElementById('earthquakeModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeEarthquakeModal() {
-  document.getElementById('earthquakeModal').classList.remove('open'); // match id
+  document.getElementById('earthquakeModal').classList.remove('open');
   document.body.style.overflow = '';
+  /* pause video when modal closes */
+  const iframe = document.querySelector('#earthquakeModal iframe');
+  if (iframe) {
+    const src = iframe.src;
+    iframe.src = '';
+    iframe.src = src;
+  }
 }
 function handleEarthquakeOverlayClick(e) {
-  if (e.target === document.getElementById('earthquakeModal')) {      // match id
+  if (e.target === document.getElementById('earthquakeModal')) {
     closeEarthquakeModal();
   }
 }
