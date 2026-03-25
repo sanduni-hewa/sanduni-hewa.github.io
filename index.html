@@ -463,6 +463,9 @@
   <div class="project-stack">
     <span class="stack-tag">Microsoft Fabric</span>                   <!-- 5. stack tags -->
   </div>
+  <div class="view-case-study">
+          View full case study <span class="arrow">→</span>
+        </div>
 </div>
 
       <!-- PROJECT 01 — clickable, opens modal -->
@@ -678,9 +681,134 @@
   </div>
 </div>
 
-  <div class="modal-overlay" id="earthquakeModal"                          <!-- 1. id -->
-  onclick="handleEarthquakeOverlayClick(event)">                         <!-- 2. function name -->
-  <button class="modal-close" onclick="closeEarthquakeModal()">          <!-- 3. function name -->
+  <div class="modal-overlay" id="earthquakeModal" onclick="handleEarthquakeOverlayClick(event)">    
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="closeEarthquakeModal()">          
+    <button class="modal-close" onclick="closeProjectModal()">✕ Close</button>
+    <div class="modal-inner">
+
+      <div class="modal-eyebrow">Self-Directed · Feb–Mar 2026 · Microsoft Fabric</div>
+      <div class="modal-title">E-Commerce Analytics<br>Platform</div>
+      <p class="modal-desc">
+        Built an end-to-end analytical solution on Microsoft Fabric using the public Olist Brazilian
+        e-commerce dataset — automating ingestion from Azure Blob Storage through a full 3-layer
+        Medallion Architecture, and surfacing insights via Power BI Direct Lake dashboards with
+        sub-second query performance.
+      </p>
+
+      <!-- KEY METRICS -->
+      <div class="modal-section-label">Key metrics</div>
+      <div class="modal-metrics">
+        <div class="modal-metric">
+          <div class="modal-metric-val">100K+</div>
+          <div class="modal-metric-lbl">Orders processed</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">9</div>
+          <div class="modal-metric-lbl">Source tables joined</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">&lt;1s</div>
+          <div class="modal-metric-lbl">Dashboard query time</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">3</div>
+          <div class="modal-metric-lbl">Medallion layers</div>
+        </div>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="modal-section-label">Architecture</div>
+      <div class="arch-flow" style="margin-bottom:40px;">
+        <div class="arch-node bronze">
+          <div class="arch-node-label">Bronze</div>
+          <div class="arch-node-sub">Azure Blob Storage<br>+ ADF Pipelines</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node silver">
+          <div class="arch-node-label">Silver</div>
+          <div class="arch-node-sub">Dataflows Gen2<br>UTF-8 cleansing</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node gold">
+          <div class="arch-node-label">Gold</div>
+          <div class="arch-node-sub">T-SQL Stored Procs<br>Star Schema</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node pbi">
+          <div class="arch-node-label">Power BI</div>
+          <div class="arch-node-sub">Direct Lake mode<br>Advanced DAX</div>
+        </div>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="modal-section-label">Project walkthrough</div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/Av44Nrhl05s"
+          title="Olist E-Commerce Analytics Platform — Microsoft Fabric Walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="modal-section-label">Screenshots</div>
+      <div class="screenshots-grid">
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-1.png" alt="Fabric Lakehouse"> -->
+          <div class="ss-slot-icon">🏗️</div>
+          <div class="ss-slot-label">Fabric Lakehouse structure</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-2.png" alt="Power BI Dashboard"> -->
+          <div class="ss-slot-icon">📊</div>
+          <div class="ss-slot-label">Power BI dashboard</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-3.png" alt="ADF Pipeline"> -->
+          <div class="ss-slot-icon">⚙️</div>
+          <div class="ss-slot-label">ADF pipeline view</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-4.png" alt="Star Schema Model"> -->
+          <div class="ss-slot-icon">🔗</div>
+          <div class="ss-slot-label">Gold layer star schema</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHTS -->
+      <div class="modal-section-label">What I built</div>
+      <ul class="modal-highlights">
+        <li>Designed and automated a 3-layer Medallion lakehouse — ingesting raw Parquet files from Azure Blob Storage via Azure Data Factory pipelines into the Bronze layer.</li>
+        <li>Resolved UTF-8 encoding issues across all 9 relational source tables using Dataflows Gen2, achieving 100% schema consistency in the Silver layer.</li>
+        <li>Built a Gold-layer Star Schema using T-SQL Stored Procedures with incremental load logic — fact and dimension tables optimized for analytical queries.</li>
+        <li>Delivered sub-second Power BI reporting via Direct Lake mode, including Advanced DAX measures for time intelligence, MoM trends, and delivery KPIs.</li>
+      </ul>
+
+      <!-- FULL STACK -->
+      <div class="modal-section-label">Full tech stack</div>
+      <div class="modal-stack">
+        <span class="modal-stack-tag">Microsoft Fabric</span>
+        <span class="modal-stack-tag">Azure Blob Storage</span>
+        <span class="modal-stack-tag">Azure Data Factory</span>
+        <span class="modal-stack-tag">Dataflows Gen2</span>
+        <span class="modal-stack-tag">OneLake</span>
+        <span class="modal-stack-tag">T-SQL</span>
+        <span class="modal-stack-tag">Stored Procedures</span>
+        <span class="modal-stack-tag">Power BI Direct Lake</span>
+        <span class="modal-stack-tag">Advanced DAX</span>
+        <span class="modal-stack-tag">Star Schema</span>
+        <span class="modal-stack-tag">Medallion Architecture</span>
+      </div>
+
+    </div>
+  </div>
+  </div>
 
      
 <!-- ── EXPERIENCE ── -->
