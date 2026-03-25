@@ -453,6 +453,18 @@
     <h2 class="reveal">Featured<br>Projects</h2>
     <div class="projects-grid reveal">
 
+      <div class="project-card clickable" onclick="openEarthquakeModal()">  <!-- 1. function name -->
+        <div class="project-screenshot">
+          <span class="screenshot-placeholder">Add Dashboard Screenshot</span>
+        </div>
+  <div class="project-num">04 — Self-Directed · 2026</div>            <!-- 2. number & date -->
+  <div class="project-title">Earthquake Analytics Platform</div>      <!-- 3. title -->
+  <p class="project-desc">Your description here...</p>                <!-- 4. description -->
+  <div class="project-stack">
+    <span class="stack-tag">Microsoft Fabric</span>                   <!-- 5. stack tags -->
+  </div>
+</div>
+
       <!-- PROJECT 01 — clickable, opens modal -->
       <div class="project-card clickable" onclick="openProjectModal()">
         <div class="project-screenshot">
@@ -665,6 +677,10 @@
     </div>
   </div>
 </div>
+
+  <div class="modal-overlay" id="earthquakeModal"                          <!-- 1. id -->
+  onclick="handleEarthquakeOverlayClick(event)">                         <!-- 2. function name -->
+  <button class="modal-close" onclick="closeEarthquakeModal()">          <!-- 3. function name -->
 
      
 <!-- ── EXPERIENCE ── -->
@@ -909,6 +925,20 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeProjectModal();
   });
+
+  function openEarthquakeModal() {
+  document.getElementById('earthquakeModal').classList.add('open');  // match id
+  document.body.style.overflow = 'hidden';
+}
+function closeEarthquakeModal() {
+  document.getElementById('earthquakeModal').classList.remove('open'); // match id
+  document.body.style.overflow = '';
+}
+function handleEarthquakeOverlayClick(e) {
+  if (e.target === document.getElementById('earthquakeModal')) {      // match id
+    closeEarthquakeModal();
+  }
+}
 </script>
 
 </body>
