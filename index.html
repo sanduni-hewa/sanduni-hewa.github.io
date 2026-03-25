@@ -1,1 +1,938 @@
 
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQQN6YVDB0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NQQN6YVDB0');
+</script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanduni G. Hewa — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ── PROJECT MODAL STYLES ── -->
+  <style>
+    /* overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 500;
+      overflow-y: auto;
+      padding: 60px 24px 80px;
+      backdrop-filter: blur(6px);
+    }
+    .modal-overlay.open { display: block; }
+
+    .modal-box {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* top accent bar */
+    .modal-box::before {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      padding: 6px 14px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+    .modal-inner { padding: 44px 52px 52px; }
+
+    .modal-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .modal-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .modal-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+
+    /* section headings inside modal */
+    .modal-section-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .modal-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+
+    /* key metrics */
+    .modal-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .modal-metric {
+      background: var(--bg3);
+      padding: 22px 20px;
+      text-align: center;
+    }
+    .modal-metric-val {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .modal-metric-lbl {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* architecture flow */
+    .arch-flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .arch-node {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 12px 18px;
+      text-align: center;
+    }
+    .arch-node-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .arch-node-sub { font-size: 10px; color: var(--muted); line-height: 1.4; }
+    .arch-node.bronze .arch-node-label { color: #e8a048; }
+    .arch-node.silver .arch-node-label { color: var(--accent2); }
+    .arch-node.gold   .arch-node-label { color: var(--accent3); }
+    .arch-node.pbi    .arch-node-label { color: var(--accent); }
+    .arch-arrow { font-size: 16px; color: rgba(255,255,255,0.2); padding: 0 8px; }
+
+    /* video embed */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 40px;
+      background: var(--bg3);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* screenshots grid */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .ss-slot {
+      background: var(--bg3);
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 3px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+    .ss-slot:hover { border-color: rgba(0,229,160,0.3); }
+    .ss-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+    .ss-slot-icon { font-size: 20px; }
+    .ss-slot-label { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+    .ss-slot-hint { font-size: 10px; color: rgba(255,255,255,0.25); }
+
+    /* highlights */
+    .modal-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .modal-highlights li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.8;
+    }
+    .modal-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* stack tags in modal */
+    .modal-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .modal-stack-tag {
+      padding: 4px 12px;
+      background: rgba(0,229,160,0.05);
+      border: 1px solid rgba(0,229,160,0.14);
+      border-radius: 3px;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    /* make project card 01 clickable */
+    .project-card.clickable {
+      cursor: pointer;
+    }
+    .project-card.clickable .view-case-study {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--font-body);
+    }
+    .view-case-study .arrow { transition: transform 0.2s; }
+    .project-card.clickable:hover .arrow { transform: translateX(4px); }
+
+    /* modal responsive */
+    @media (max-width: 700px) {
+      .modal-inner { padding: 28px 24px 40px; }
+      .modal-metrics { grid-template-columns: repeat(2, 1fr); }
+      .screenshots-grid { grid-template-columns: 1fr; }
+      .arch-flow { flex-direction: column; align-items: flex-start; }
+      .arch-arrow { transform: rotate(90deg); padding: 6px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">SGH</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Data Analyst · Analytics Engineer · Power BI Developer</div>
+      <h1>
+        Sanduni<br>
+        <span class="outline">G. <span class="accent">Hewa</span></span>
+      </h1>
+      <p class="hero-desc">
+        Microsoft Certified Fabric Analytics Engineer building end-to-end analytical pipelines.
+        Specialist in Medallion Architecture, Direct Lake Power BI, and Star Schema modeling
+        that drives real-time executive decisions.
+      </p>
+      <div class="hero-certs">
+        <span class="cert-badge">Fabric Analytics Engineer</span>
+        <span class="cert-badge">Power BI Data Analyst</span>
+        <span class="cert-badge">Azure Fundamentals</span>
+        <span class="cert-badge">Scrum for Developers</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="mailto:sandurash19@gmail.com" class="btn btn-outline">Email Me</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-placeholder"><img src="profile_img.png" alt="Sanduni G. Hewa"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label reveal">About</div>
+    <h2 class="reveal">Who I Am</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          I'm a Data Engineer and Analytics Engineer based in Buford, GA, with a Bachelor of Science
+          in Computer Science (Data Science Minor) from Lindenwood University — graduating with a 3.91 GPA.
+        </p>
+        <p>
+          I specialize in building end-to-end analytical solutions on Microsoft Fabric, leveraging
+          Direct Lake mode and Medallion Architecture to deliver high-performance, real-time insights
+          that power executive decision-making.
+        </p>
+        <p>
+          I hold multiple Microsoft certifications and am passionate about bridging the gap between
+          raw data and actionable business intelligence.
+        </p>
+        <div style="margin-top:32px;">
+          <a href="mailto:sandurash19@gmail.com" class="btn btn-primary">Get In Touch</a>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3.91</div>
+          <div class="stat-label">GPA</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">80%</div>
+          <div class="stat-label">Efficiency Gained</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<!-- ── CERTIFICATIONS ── -->
+<section id="certifications">
+  <div class="section-wrap">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="reveal">Certifications</h2>
+    <div class="certs-grid reveal">
+
+      <div class="cert-card">
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/1E85BD8F3F5A1547?sharingId=9EED16835D751D03" 
+           target="_blank" class="cert-badge-link">
+          <img src="microsoft-certified-associate-badge.svg" alt="Fabric Analytics Engineer Badge" class="cert-badge-img">
+        </a>
+        <div class="cert-name">Microsoft Certified: Fabric Analytics Engineer Associate</div>
+        <div class="cert-date">Mar 2026</div>
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/1E85BD8F3F5A1547?sharingId=9EED16835D751D03" 
+   target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+
+      <div class="cert-card">
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/6236FA10B22979C4?sharingId=9EED16835D751D03" 
+           target="_blank" class="cert-badge-link">
+          <img src="microsoft-certified-associate-badge.svg" alt="Power BI Data Analyst Badge" class="cert-badge-img">
+        </a>
+        <div class="cert-name">Microsoft Certified: Power BI Data Analyst Associate</div>
+        <div class="cert-date">Jan 2026</div>
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/6236FA10B22979C4?sharingId=9EED16835D751D03" 
+   target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+
+      <div class="cert-card">
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/9B50A33F3C779F8F?sharingId=9EED16835D751D03" 
+           target="_blank" class="cert-badge-link">
+          <img src="microsoft-certified-fundamentals-badge.svg" alt="Azure Fundamentals Badge" class="cert-badge-img">
+        </a>
+        <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+        <div class="cert-date">Feb 2026</div>
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/9B50A33F3C779F8F?sharingId=9EED16835D751D03" 
+   target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+
+      <div class="cert-card">
+        <a href="https://www.linkedin.com/learning/certificates/257e94c8a78ba4fc746b96b9850660e632fc7388e04aa0272223bb8d5bff587c?u=57680713" 
+           target="_blank" class="cert-badge-link">
+          <img src="linkedin_logo.jpg" alt="Scrum for Developers Badge" class="cert-badge-img">
+        </a>
+        <div class="cert-name">Agile Software Development: Scrum for Developers</div>
+        <div class="cert-date">Jul 2025</div>
+        <a href="https://www.linkedin.com/learning/certificates/257e94c8a78ba4fc746b96b9850660e632fc7388e04aa0272223bb8d5bff587c?u=57680713" 
+   target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label reveal">Work</div>
+    <h2 class="reveal">Featured<br>Projects</h2>
+    <div class="projects-grid reveal">
+
+      <!-- PROJECT 01 — clickable, opens modal -->
+      <div class="project-card clickable" onclick="openProjectModal()">
+        <div class="project-screenshot">
+          <span class="screenshot-placeholder">Add Dashboard Screenshot</span>
+        </div>
+        <div class="project-num">01 — Self-Directed · Feb–Mar 2026</div>
+        <div class="project-title">E-Commerce Analytics Platform</div>
+        <p class="project-desc">
+          End-to-end Medallion Architecture pipeline on Microsoft Fabric using the Olist Marketplace
+          public dataset, delivering sub-second Power BI reporting via Direct Lake mode.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Microsoft Fabric</span>
+          <span class="stack-tag">Azure Blob Storage</span>
+          <span class="stack-tag">Azure Data Factory</span>
+          <span class="stack-tag">Dataflows Gen2</span>
+          <span class="stack-tag">T-SQL</span>
+          <span class="stack-tag">Power BI</span>
+        </div>
+        <div class="view-case-study">
+          View full case study <span class="arrow">→</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 01 — clickable, opens modal -->
+      <div class="project-card clickable" onclick="openProjectModal()">
+        <div class="project-screenshot">
+          <span class="screenshot-placeholder">Add Dashboard Screenshot</span>
+        </div>
+        <div class="project-num">01 — Self-Directed · Feb–Mar 2026</div>
+        <div class="project-title">E-Commerce Analytics Platform</div>
+        <p class="project-desc">
+          End-to-end Medallion Architecture pipeline on Microsoft Fabric using the Olist Marketplace
+          public dataset, delivering sub-second Power BI reporting via Direct Lake mode.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Microsoft Fabric</span>
+          <span class="stack-tag">Azure Blob Storage</span>
+          <span class="stack-tag">Azure Data Factory</span>
+          <span class="stack-tag">Dataflows Gen2</span>
+          <span class="stack-tag">T-SQL</span>
+          <span class="stack-tag">Power BI</span>
+        </div>
+        <div class="view-case-study">
+          View full case study <span class="arrow">→</span>
+        </div>
+      </div>
+
+
+      <div class="project-card">
+        <div class="project-screenshot">
+          <img src="Mathnasium_PCR_Tool.png" alt="Project Screenshot">
+        </div>
+        <div class="project-num">02 — Mathnasium · Sep 2025–Present</div>
+        <div class="project-title">Student Analytics & ETL Automation</div>
+        <p class="project-desc">
+          Automated ETL workflow reducing manual data entry by 80%, paired with Power BI dashboards
+          surfacing student learning trends and operational KPIs for management.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">VBA</span>
+          <span class="stack-tag">Selenium</span>
+          <span class="stack-tag">Power BI</span>
+        </div>
+        <ul class="project-highlights">
+          <li>ETL workflow automating sync between local data and web tracking systems</li>
+          <li>Automated validation checks — 100% accuracy across student progress reports</li>
+          <li>Power BI dashboards providing visibility into student KPIs for management</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/sanduni-hewa/Mathnasium-Data-Entry-Automation" target="_blank" class="btn-project">
+            <span class="btn-project-icon">⌥</span> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-screenshot">
+          <img src="Broadcast studio project.png" alt="Project Screenshot">
+        </div>
+        <div class="project-num">03 — Lindenwood University · Aug–Dec 2025</div>
+        <div class="project-title">Broadcast Management Backend</div>
+        <p class="project-desc">
+          PostgreSQL relational database for a broadcast management system, bridging operational
+          data storage with real-time consumption for a team of 6.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Database Design</span>
+        </div>
+        <ul class="project-highlights">
+          <li>Designed complex schemas and table relationships for structured workflows</li>
+          <li>Tuned complex SQL queries for high-frequency operational data</li>
+          <li>Ensured 100% data integrity for real-time system updates</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/TylerRWard/Broadcast-Studio-Production-Planner?tab=readme-ov-file" target="_blank" class="btn-project">
+            <span class="btn-project-icon">⌥</span> GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── OLIST PROJECT MODAL ── -->
+<div class="modal-overlay" id="projectModal" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeProjectModal()">✕ Close</button>
+    <div class="modal-inner">
+
+      <div class="modal-eyebrow">Self-Directed · Feb–Mar 2026 · Microsoft Fabric</div>
+      <div class="modal-title">E-Commerce Analytics<br>Platform</div>
+      <p class="modal-desc">
+        Built an end-to-end analytical solution on Microsoft Fabric using the public Olist Brazilian
+        e-commerce dataset — automating ingestion from Azure Blob Storage through a full 3-layer
+        Medallion Architecture, and surfacing insights via Power BI Direct Lake dashboards with
+        sub-second query performance.
+      </p>
+
+      <!-- KEY METRICS -->
+      <div class="modal-section-label">Key metrics</div>
+      <div class="modal-metrics">
+        <div class="modal-metric">
+          <div class="modal-metric-val">100K+</div>
+          <div class="modal-metric-lbl">Orders processed</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">9</div>
+          <div class="modal-metric-lbl">Source tables joined</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">&lt;1s</div>
+          <div class="modal-metric-lbl">Dashboard query time</div>
+        </div>
+        <div class="modal-metric">
+          <div class="modal-metric-val">3</div>
+          <div class="modal-metric-lbl">Medallion layers</div>
+        </div>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="modal-section-label">Architecture</div>
+      <div class="arch-flow" style="margin-bottom:40px;">
+        <div class="arch-node bronze">
+          <div class="arch-node-label">Bronze</div>
+          <div class="arch-node-sub">Azure Blob Storage<br>+ ADF Pipelines</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node silver">
+          <div class="arch-node-label">Silver</div>
+          <div class="arch-node-sub">Dataflows Gen2<br>UTF-8 cleansing</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node gold">
+          <div class="arch-node-label">Gold</div>
+          <div class="arch-node-sub">T-SQL Stored Procs<br>Star Schema</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node pbi">
+          <div class="arch-node-label">Power BI</div>
+          <div class="arch-node-sub">Direct Lake mode<br>Advanced DAX</div>
+        </div>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="modal-section-label">Project walkthrough</div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/Av44Nrhl05s"
+          title="Olist E-Commerce Analytics Platform — Microsoft Fabric Walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="modal-section-label">Screenshots</div>
+      <div class="screenshots-grid">
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-1.png" alt="Fabric Lakehouse"> -->
+          <div class="ss-slot-icon">🏗️</div>
+          <div class="ss-slot-label">Fabric Lakehouse structure</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-2.png" alt="Power BI Dashboard"> -->
+          <div class="ss-slot-icon">📊</div>
+          <div class="ss-slot-label">Power BI dashboard</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-3.png" alt="ADF Pipeline"> -->
+          <div class="ss-slot-icon">⚙️</div>
+          <div class="ss-slot-label">ADF pipeline view</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+        <div class="ss-slot">
+          <!-- REPLACE: <img src="your-screenshot-4.png" alt="Star Schema Model"> -->
+          <div class="ss-slot-icon">🔗</div>
+          <div class="ss-slot-label">Gold layer star schema</div>
+          <div class="ss-slot-hint">Add screenshot</div>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHTS -->
+      <div class="modal-section-label">What I built</div>
+      <ul class="modal-highlights">
+        <li>Designed and automated a 3-layer Medallion lakehouse — ingesting raw Parquet files from Azure Blob Storage via Azure Data Factory pipelines into the Bronze layer.</li>
+        <li>Resolved UTF-8 encoding issues across all 9 relational source tables using Dataflows Gen2, achieving 100% schema consistency in the Silver layer.</li>
+        <li>Built a Gold-layer Star Schema using T-SQL Stored Procedures with incremental load logic — fact and dimension tables optimized for analytical queries.</li>
+        <li>Delivered sub-second Power BI reporting via Direct Lake mode, including Advanced DAX measures for time intelligence, MoM trends, and delivery KPIs.</li>
+      </ul>
+
+      <!-- FULL STACK -->
+      <div class="modal-section-label">Full tech stack</div>
+      <div class="modal-stack">
+        <span class="modal-stack-tag">Microsoft Fabric</span>
+        <span class="modal-stack-tag">Azure Blob Storage</span>
+        <span class="modal-stack-tag">Azure Data Factory</span>
+        <span class="modal-stack-tag">Dataflows Gen2</span>
+        <span class="modal-stack-tag">OneLake</span>
+        <span class="modal-stack-tag">T-SQL</span>
+        <span class="modal-stack-tag">Stored Procedures</span>
+        <span class="modal-stack-tag">Power BI Direct Lake</span>
+        <span class="modal-stack-tag">Advanced DAX</span>
+        <span class="modal-stack-tag">Star Schema</span>
+        <span class="modal-stack-tag">Medallion Architecture</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ── -->
+<div class="full-bleed" id="experience">
+  <div class="section-wrap" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label reveal">Career</div>
+    <h2 class="reveal">Experience</h2>
+    <div class="timeline reveal">
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Sep 2025 – Present</div>
+          <div class="timeline-company">Mathnasium</div>
+          <div class="timeline-location">Buford, GA</div>
+        </div>
+        <div>
+          <div class="timeline-role">IT Assistant & Instructor</div>
+          <ul class="timeline-bullets">
+            <li>Engineered a custom automation pipeline using Selenium and Excel/VBA to scrape and synchronize student data, reducing manual entry time by over 80%.</li>
+            <li>Developed automated validation scripts to ensure 100% accuracy in student tracking and progress reporting.</li>
+            <li>Streamlined administrative workflows by converting manual spreadsheets into automated, report-ready data assets for management.</li>
+            <li>Facilitated personalized mathematics instruction for students, translating complex logical and numerical concepts into easily digestible learning modules.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Jul – Dec 2025</div>
+          <div class="timeline-company">MindHome Inc</div>
+          <div class="timeline-location">Louisville, CO</div>
+        </div>
+        <div>
+          <div class="timeline-role">Web Developer Internship</div>
+          <ul class="timeline-bullets">
+            <li>Developed and customized interactive web pages using Builder.io, implementing UI improvements that increased user engagement and navigation flow.</li>
+            <li>Integrated front-end interfaces with back-end services to ensure high performance and data reliability across all device types and browsers.</li>
+            <li>Partnered with cross-functional teams in an Agile environment to translate complex business requirements into functional, scalable web features.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Jan – May 2025</div>
+          <div class="timeline-company">Lindenwood University</div>
+          <div class="timeline-location">St. Charles, MO</div>
+        </div>
+        <div>
+          <div class="timeline-role">Backend Developer Intern</div>
+          <ul class="timeline-bullets">
+            <li>Collaborated within a 6-person engineering team to develop a real-time broadcast management system, focusing on scalable operational workflows and data synchronization.</li>
+            <li>Designed and implemented a PostgreSQL relational database, including custom schema architecture and table relationships for user roles and templates.</li>
+            <li>Engineered and optimized complex SQL queries to manage and validate operational data, ensuring high data integrity and reporting-ready datasets.</li>
+            <li>Developed backend logic to support real-time data updates, bridging the gap between raw database storage and the user interface.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-date">Aug – Dec 2024</div>
+          <div class="timeline-company">Lindenwood University</div>
+          <div class="timeline-location">St. Charles, MO</div>
+        </div>
+        <div>
+          <div class="timeline-role">Undergraduate Teaching Assistant in Python</div>
+          <ul class="timeline-bullets">
+            <li>Provided hands-on debugging and logic support for students, mastering core concepts in Python, Data Structures, and Algorithms.</li>
+            <li>Evaluated Python programs for 50+ students, providing constructive feedback on code efficiency, logic flow, and modularity.</li>
+            <li>Developed technical walkthroughs and documentation to help students simplify complex programming logic and improve debugging techniques.</li>
+            <li>Collaborated with faculty to identify student learning gaps and refine lab materials based on performance trends and class data.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── SKILLS ── -->
+<div class="full-bleed" id="skills">
+  <div class="section-wrap" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="reveal">Technical<br>Expertise</h2>
+    <div class="skills-grid reveal">
+
+      <div class="skill-cat">
+        <div class="skill-cat-title">Data Engineering</div>
+        <div class="skill-tags">
+          <span class="tag">Microsoft Fabric</span>
+          <span class="tag">Lakehouses & Warehouses</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">SparkSQL</span>
+          <span class="tag">Azure Data Factory</span>
+          <span class="tag">Dataflows Gen2</span>
+          <span class="tag">Medallion Architecture</span>
+          <span class="tag">OneLake Shortcuts</span>
+          <span class="tag">ETL / ELT Pipelines</span>
+          <span class="tag">Incremental Processing</span>
+          <span class="tag">Delta Lake</span>
+          <span class="tag">Data Lakehouse</span>
+          <span class="tag">Schema Design</span>
+          <span class="tag">Data Ingestion</span>
+          <span class="tag">Data Transformation</span>
+        </div>
+      </div>
+
+      <div class="skill-cat">
+        <div class="skill-cat-title">Analytics & Modeling</div>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Direct Lake</span>
+          <span class="tag">Import & DirectQuery</span>
+          <span class="tag">Advanced DAX</span>
+          <span class="tag">Star Schema</span>
+          <span class="tag">Calculation Groups</span>
+          <span class="tag">Tabular Editor</span>
+          <span class="tag">Power Query (M)</span>
+          <span class="tag">Executive Dashboards</span>
+          <span class="tag">KPI Tracking</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">Real-Time Reporting</span>
+          <span class="tag">Self-Service Analytics</span>
+          <span class="tag">Dimensional Modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-cat">
+        <div class="skill-cat-title">Languages & Tools</div>
+        <div class="skill-tags">
+          <span class="tag">T-SQL</span>
+          <span class="tag">Stored Procedures</span>
+          <span class="tag">Functions & Triggers</span>
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Scikit-Learn</span>
+          <span class="tag">Statsmodels</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MS SQL Server</span>
+          <span class="tag">Git</span>
+          <span class="tag">VBA Automation</span>
+          <span class="tag">Selenium</span>
+          <span class="tag">Excel</span>
+          <span class="tag">R</span>
+          <span class="tag">Linux</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Jupyter Notebook</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+
+      <div class="skill-cat">
+        <div class="skill-cat-title">AI & Machine Learning</div>
+        <div class="skill-tags">
+          <span class="tag tag-ai">MLflow</span>
+          <span class="tag tag-ai">LLM API Integration</span>
+          <span class="tag tag-ai">OpenAI API</span>
+          <span class="tag tag-ai">Claude API</span>
+          <span class="tag tag-ai">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="skill-cat">
+        <div class="skill-cat-title">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="tag tag-soft">Communication</span>
+          <span class="tag tag-soft">Problem Solving</span>
+          <span class="tag tag-soft">Team Collaboration</span>
+          <span class="tag tag-soft">Attention to Detail</span>
+          <span class="tag tag-soft">Time Management</span>
+          <span class="tag tag-soft">Adaptability</span>
+          <span class="tag tag-soft">Eager to Learn</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  
+<!-- ── CONTACT ── -->
+<div class="full-bleed" id="contact">
+  <div class="section-wrap" style="max-width:1200px;margin:0 auto;">
+    <div class="contact-box reveal">
+      <h2>Let's Work<br><span style="color:var(--accent)">Together</span></h2>
+      <p class="contact-sub">Open to Data Engineering, Analytics Engineering, and Power BI roles.</p>
+      <div class="contact-links">
+        <a href="mailto:sandurash19@gmail.com" class="btn btn-primary">sandurash19@gmail.com</a>
+        <a href="https://github.com/SanduRash" target="_blank" class="btn btn-outline">GitHub</a>
+        <a href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="tel:+13142158204" class="btn btn-outline">+1 314 215 8204</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span>© 2026 Sanduni G. Hewa</span>
+  <span>Data Engineer · Analytics Engineer · Power BI Developer</span>
+</footer>
+
+<script>
+  /* ── scroll reveal ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── project modal ── */
+  function openProjectModal() {
+    document.getElementById('projectModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal() {
+    document.getElementById('projectModal').classList.remove('open');
+    document.body.style.overflow = '';
+    /* pause video when modal closes */
+    const iframe = document.querySelector('#projectModal iframe');
+    if (iframe) {
+      const src = iframe.src;
+      iframe.src = '';
+      iframe.src = src;
+    }
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('projectModal')) {
+      closeProjectModal();
+    }
+  }
+
+  /* close on Escape key */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeProjectModal();
+  });
+</script>
+
+</body>
+</html>
