@@ -391,7 +391,7 @@
       <!-- PROJECT 02 — Earthquake, opens modal -->
       <div class="project-card clickable" onclick="openEarthquakeModal()">
         <div class="project-screenshot">
-          <span class="screenshot-placeholder">Add Dashboard Screenshot</span>
+          <img src="Worldwide Events Report.jpeg" alt="Project Screenshot">
         </div>
         <div class="project-num">02 — Self-Directed · 2026</div>
         <div class="project-title">Earthquake Analytics Platform</div>
@@ -541,7 +541,7 @@
   <div class="modal-box" id="earthquakeModalBox">
     <button class="modal-close" onclick="closeEarthquakeModal()">✕ Close</button>
     <div class="modal-inner">
-      <div class="modal-eyebrow">Self-Directed · 2026 · Microsoft Fabric</div>
+      <div class="modal-eyebrow">Personal Project · 2026 · Microsoft Fabric</div>
       <div class="modal-title">Earthquake Analytics<br>Platform</div>
       <p class="modal-desc">
         Built an end-to-end analytical solution on Microsoft Fabric using the USGS public
@@ -562,7 +562,7 @@
         <div class="arch-arrow">→</div>
         <div class="arch-node silver"><div class="arch-node-label">Silver</div><div class="arch-node-sub">PySpark Notebook<br>cleansing & typing</div></div>
         <div class="arch-arrow">→</div>
-        <div class="arch-node gold"><div class="arch-node-label">Gold</div><div class="arch-node-sub">SparkSQL<br>Star Schema</div></div>
+        <div class="arch-node gold"><div class="arch-node-label">Gold</div><div class="arch-node-sub">PySpark Notebook<br>Semantic Model</div></div>
         <div class="arch-arrow">→</div>
         <div class="arch-node pbi"><div class="arch-node-label">Power BI</div><div class="arch-node-sub">Direct Lake mode<br>Map + DAX visuals</div></div>
       </div>
@@ -574,17 +574,18 @@
       </div>
       <div class="modal-section-label">Screenshots</div>
       <div class="screenshots-grid">
-        <div class="ss-slot"><!-- <img src="eq-lakehouse.png"> --><div class="ss-slot-icon">🏗️</div><div class="ss-slot-label">Fabric Lakehouse structure</div><div class="ss-slot-hint">Add screenshot</div></div>
-        <div class="ss-slot"><!-- <img src="eq-dashboard.png"> --><div class="ss-slot-icon">🗺️</div><div class="ss-slot-label">Power BI map dashboard</div><div class="ss-slot-hint">Add screenshot</div></div>
-        <div class="ss-slot"><!-- <img src="eq-notebook.png"> --><div class="ss-slot-icon">🐍</div><div class="ss-slot-label">Python ingestion notebook</div><div class="ss-slot-hint">Add screenshot</div></div>
-        <div class="ss-slot"><!-- <img src="eq-schema.png"> --><div class="ss-slot-icon">🔗</div><div class="ss-slot-label">Gold layer star schema</div><div class="ss-slot-hint">Add screenshot</div></div>
+        <div class="ss-slot"><img src="Overview.jpeg"><div class="ss-slot-icon">🏗️</div><div class="ss-slot-label">Fabric Lakehouse structure</div><div class="ss-slot-hint">Add screenshot</div></div>
+        <div class="ss-slot"><img src="Worldwide Events Report.jpeg"><div class="ss-slot-icon">🗺️</div><div class="ss-slot-label">Power BI map dashboard</div><div class="ss-slot-hint">Add screenshot</div></div>
+        <div class="ss-slot"><img src="Pipeline.jpeg"><div class="ss-slot-icon">🐍</div><div class="ss-slot-label">Pipeline</div><div class="ss-slot-hint">Add screenshot</div></div>
+        <div class="ss-slot"><img src="Schedule.jpeg"><div class="ss-slot-icon">🔗</div><div class="ss-slot-label">Scheduling</div><div class="ss-slot-hint">Add screenshot</div></div>
       </div>
       <div class="modal-section-label">What I built</div>
       <ul class="modal-highlights">
-        <li>Fetched live seismic event data from the USGS public REST API using Python, saving raw GeoJSON responses into the Bronze layer of a Fabric Lakehouse.</li>
-        <li>Transformed and typed raw JSON fields in the Silver layer using PySpark notebooks — flattening nested structures and standardizing location and magnitude fields.</li>
-        <li>Built a Gold-layer Star Schema optimized for geospatial and time-series analysis, enabling drill-down by region, magnitude range, and date.</li>
-        <li>Delivered sub-second Power BI reporting via Direct Lake mode, with map visuals, magnitude trend charts, and DAX measures for frequency and depth analysis.</li>
+        <li>Fetched daily seismic event data from the USGS REST API using Python, saving raw GeoJSON responses date-stamped into the Fabric Lakehouse Files layer and loaded into a Spark DataFrame. Session stopped after each run to free up Fabric trial capacity.</li>
+        <li>Flattened nested GeoJSON structure using PySpark — extracting coordinates (longitude, latitude, elevation) and key properties (magnitude, place, significance score) from deeply nested fields. Converted Unix millisecond timestamps to proper Timestamp types and appended results to the Silver table incrementally.</li>
+        <li>Enriched Gold layer data with country codes via a custom PySpark UDF backed by the reverse_geocoder library, and classified every earthquake into Low / Moderate / High significance bands using a derived sig_class column.</li>
+        <li>Built a Fabric pipeline chaining Bronze → Silver → Gold notebooks with a Wait activity between each run to clear trial capacity, scheduled to run once daily.</li>
+        <li>Created a semantic model on top of the Gold table defining relationships and measures, with a scheduled refresh — and built a Power BI Direct Lake report surfacing magnitude trends, significance breakdowns, and country-level seismic activity.</li>
       </ul>
       <div class="modal-section-label">Full tech stack</div>
       <div class="modal-stack">
@@ -593,7 +594,6 @@
         <span class="modal-stack-tag">Python</span>
         <span class="modal-stack-tag">requests</span>
         <span class="modal-stack-tag">PySpark</span>
-        <span class="modal-stack-tag">SparkSQL</span>
         <span class="modal-stack-tag">OneLake</span>
         <span class="modal-stack-tag">Power BI Direct Lake</span>
         <span class="modal-stack-tag">Advanced DAX</span>
