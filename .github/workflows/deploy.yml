@@ -26,6 +26,8 @@ jobs:
           mkdir -p public/images
           cp profile_img.png public/images/profile_img.png
       - uses: withastro/action@v3
+        with:
+          node-version: 24
   deploy:
     if: github.event_name != 'pull_request'
     environment:
