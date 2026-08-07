@@ -439,6 +439,8 @@ footer { display: flex; justify-content: space-between; gap: 30px; padding: 25px
 .tech-logo img{display:block;width:100%;height:100%;object-fit:contain}
 .tech-logo>svg{display:block;width:100%;height:100%}
 .tech-logo>svg .brand-fill{stroke:none}
+.logo-fabric path:first-of-type{fill:url(#fabric-a);stroke:none}
+.logo-fabric path:last-of-type{fill:#2ed7c5;stroke:none}
 .logo-powerbi rect:nth-child(1){fill:#e8a900}
 .logo-powerbi rect:nth-child(2){fill:#f2c811}
 .logo-powerbi rect:nth-child(3){fill:#f7d633}
