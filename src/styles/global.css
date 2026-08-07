@@ -416,3 +416,22 @@ footer { display: flex; justify-content: space-between; gap: 30px; padding: 25px
 .contact-section{background:radial-gradient(circle at 70% 50%,rgba(0,170,255,.13),transparent 35%),#071713;border-color:rgba(0,229,160,.25)}
 .contact-section .button-primary{background:linear-gradient(100deg,var(--lime),var(--cyan));color:#03110d}
 
+/* Technology logo system */
+.tech-logo{display:inline-grid;place-items:center;width:30px;height:30px;flex:0 0 auto;color:currentColor}
+.tech-logo svg{display:block;width:100%;height:100%;overflow:visible}
+.tech-logo svg path,.tech-logo svg ellipse{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.tech-logo svg rect{fill:currentColor;stroke:none}
+.tech-logo .logo-fill-one,.tech-logo .logo-fill-two{stroke:none;fill:currentColor}
+.tech-logo .logo-fill-two{color:var(--cyan)}
+.logo-word{font:800 14px var(--font-sans);letter-spacing:-.08em}
+.logo-gh{font-size:11px;letter-spacing:-.04em}
+.logo-glyph{font-size:24px;line-height:1}
+.tech-node{gap:3px}
+.tech-node .tech-logo{width:34px;height:34px;filter:drop-shadow(0 0 7px currentColor)}
+.tech-node strong{line-height:1.1}
+.tech-node>span:not(.tech-logo){display:none}
+.technology-strip span{display:inline-flex;align-items:center;gap:8px}
+.technology-strip .tech-logo{width:22px;height:22px;color:var(--lime)}
+.technology-strip span:nth-child(2) .tech-logo,.technology-strip span:nth-child(5) .tech-logo{color:var(--cyan)}
+.technology-strip span:nth-child(3) .tech-logo,.technology-strip span:nth-child(6) .tech-logo,.technology-strip span:nth-child(7) .tech-logo{color:var(--pink)}
+
