@@ -1,13 +1,13 @@
 :root {
-  --ink: #07100d;
-  --paper: #f3f5ed;
-  --paper-2: #e9ede2;
+  --ink: #edf4ef;
+  --paper: #0a1411;
+  --paper-2: #0d1a16;
   --night: #08120f;
   --night-2: #0d1b16;
   --lime: #b8ff5a;
   --cyan: #54e6ff;
-  --muted: #52615a;
-  --line: rgba(7, 16, 13, 0.16);
+  --muted: #9aa9a1;
+  --line: rgba(255, 255, 255, 0.13);
   --font-sans: 'Manrope', sans-serif;
   --font-mono: 'DM Mono', monospace;
 }
@@ -66,7 +66,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .section { padding: clamp(90px, 10vw, 150px) clamp(20px, 5vw, 76px); }
 .section-heading { display: grid; grid-template-columns: minmax(150px,.4fr) minmax(360px,1fr) minmax(220px,.5fr); gap: 40px; align-items: start; margin-bottom: 66px; }
-.section-kicker { color: #4f6258; }
+.section-kicker { color: #91a49a; }
 .section-heading h2, .contact-section h2 { margin: 0; font-size: clamp(38px, 5vw, 72px); line-height: 1.03; letter-spacing: -.055em; }
 .section-heading > p:last-child { margin: 8px 0 0; color: var(--muted); }
 .work-section { background: var(--paper); }
@@ -74,14 +74,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-card { min-height: 520px; display: flex; flex-direction: column; padding: clamp(25px, 3vw, 42px); border-right: 1px solid var(--line); position: relative; overflow: hidden; transition: background .25s, transform .25s; }
 .project-card:last-child { border-right: 0; }
 .project-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 4px; background: var(--project-accent); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
-.project-card:hover { background: white; transform: translateY(-5px); }
+.project-card:hover { background: #10201a; transform: translateY(-5px); }
 .project-card:hover::before { transform: scaleX(1); }
 .project-topline { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font: 9px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; }
 .project-card h3 { margin: 75px 0 20px; font-size: clamp(25px, 2.5vw, 38px); line-height: 1.08; letter-spacing: -.04em; }
 .project-card p { color: var(--muted); }
 .project-outcome { margin-top: auto; padding: 28px 0 20px; border-top: 1px solid var(--line); font-size: 14px; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
-.tag-list li { padding: 5px 8px; background: rgba(7,16,13,.05); font: 9px var(--font-mono); text-transform: uppercase; }
+.tag-list li { padding: 5px 8px; background: rgba(255,255,255,.06); color: #c7d2cc; font: 9px var(--font-mono); text-transform: uppercase; }
 
 .capability-section { background: var(--night); color: white; }
 .capability-section .section-kicker, .capability-section .section-heading > p { color: rgba(255,255,255,.5); }
@@ -104,14 +104,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .credential-list { border-top: 1px solid var(--line); }
 .credential-list a { display: grid; grid-template-columns: .3fr 1fr auto; gap: 30px; align-items: center; padding: 25px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .2s, background .2s; }
-.credential-list a:hover { padding-left: 15px; padding-right: 15px; background: white; }
+.credential-list a:hover { padding-left: 15px; padding-right: 15px; background: rgba(255,255,255,.045); }
 .credential-list span, .credential-list small { color: var(--muted); font: 10px var(--font-mono); text-transform: uppercase; }
 .credential-list strong { font-size: clamp(16px, 2vw, 24px); }
 
-.contact-section { padding: clamp(90px, 11vw, 170px) clamp(20px, 8vw, 130px); background: var(--cyan); }
+.contact-section { padding: clamp(90px, 11vw, 170px) clamp(20px, 8vw, 130px); background: #10251f; border-top: 1px solid rgba(84,230,255,.25); }
+.contact-section .section-kicker { color: var(--cyan); }
 .contact-section h2 { max-width: 850px; }
 .contact-section > p:not(.section-kicker) { max-width: 660px; margin: 25px 0 40px; font-size: 18px; }
-.contact-section .button-primary { background: var(--night); border-color: var(--night); color: white; }
+.contact-section .button-primary { background: var(--cyan); border-color: var(--cyan); color: var(--night); }
 .text-link { margin-left: 20px; font: 11px var(--font-mono); text-transform: uppercase; }
 footer { display: flex; justify-content: space-between; gap: 30px; padding: 25px clamp(20px, 5vw, 76px); background: var(--night); color: rgba(255,255,255,.5); font: 10px var(--font-mono); text-transform: uppercase; }
 
