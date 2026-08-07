@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    index: '01 / DATABRICKS',
+    title: 'FMCG Data Engineering Platform',
+    summary: 'A multi-source medallion pipeline that standardizes transaction data into governed, BI-ready datasets with incremental ingestion and automated quality rules.',
+    outcome: '90K+ records standardized across multiple business datasets',
+    tags: ['Databricks', 'PySpark', 'SQL', 'AWS S3', 'Delta Lake'],
+    accent: '#b8ff5a'
+  },
+  {
+    index: '02 / MICROSOFT FABRIC',
+    title: 'NYC Taxi Analytics Platform',
+    summary: 'A metadata-driven Fabric pipeline and lakehouse model designed for scalable monthly ingestion, SQL transformations, and Power BI consumption.',
+    outcome: '13M+ records processed Â· presentation layer improved by 80%',
+    tags: ['Microsoft Fabric', 'T-SQL', 'Power BI', 'Lakehouse', 'Dataflows Gen2'],
+    accent: '#54e6ff'
+  },
+  {
+    index: '03 / LAKEFLOW',
+    title: 'Real-Time Transportation Pipeline',
+    summary: 'A declarative Spark pipeline with governed incremental ingestion, medallion transformations, and a maintainable production-oriented design.',
+    outcome: '356K+ records ingested Â· pipeline code reduced by 63%',
+    tags: ['Databricks', 'Lakeflow SDP', 'Unity Catalog', 'PySpark', 'AWS S3'],
+    accent: '#d9a7ff'
+  }
+];
+
+const capabilities = [
+  { number: '01', title: 'Data platforms', copy: 'Microsoft Fabric, Databricks, Azure Data Factory, AWS S3, OneLake, lakehouses, warehouses, and Delta Lake.' },
+  { number: '02', title: 'Data engineering', copy: 'Python, PySpark, Spark SQL, orchestration, batch and incremental ingestion, medallion architecture, and data quality.' },
+  { number: '03', title: 'Analytics engineering', copy: 'T-SQL, dimensional modeling, star schemas, stored procedures, semantic models, DAX, Direct Lake, and Power BI.' },
+  { number: '04', title: 'Database engineering', copy: 'PostgreSQL, SQL Server, relational schema design, CTEs, window functions, query optimization, RBAC, and data integrity.' }
+];
+---
+
+<BaseLayout title="Sanduni G. Hewa | Data Engineer & Analytics Engineer" description="Portfolio of Sanduni G. Hewa, a Microsoft-certified data engineer building scalable pipelines and analytics solutions with Fabric, Databricks, PySpark, SQL, and Power BI.">
+  <Header />
+  <main id="main">
+    <Hero />
+
+    <section class="section work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Selected systems</p>
+        <h2 id="work-title">Work with evidence,<br />not just tool lists.</h2>
+        <p>Each project is presented as an engineering decision: the problem, architecture, tradeoffs, reliability controls, and measurable outcome.</p>
+      </div>
+      <div class="project-grid reveal">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </section>
+
+    <section class="section capability-section" id="capabilities" aria-labelledby="capability-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Capabilities</p>
+        <h2 id="capability-title">From ingestion to a trusted decision layer.</h2>
+      </div>
+      <div class="capability-grid reveal">
+        {capabilities.map((item) => (
+          <article>
+            <span>{item.number}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Experience</p>
+        <h2 id="experience-title">Engineering improvements people can feel.</h2>
+      </div>
+      <div class="timeline reveal">
+        <article>
+          <div><time>2025 â€” Present</time><span>Mathnasium Â· Dacula, GA</span></div>
+          <div><h3>IT Developer</h3><p>Built browser automation that reduced manual administrative effort by approximately 80%, designed a Python student-retention pipeline, and added ingestion quality checks that prevented downstream reporting errors.</p></div>
+        </article>
+        <article>
+          <div><time>Jan â€” May 2025</time><span>Lindenwood University</span></div>
+          <div><h3>Backend Developer</h3><p>Designed PostgreSQL schemas and optimized transformations with CTEs and window functions, improving query performance by approximately 40% for real-time backend workflows.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section credential-section" id="credentials" aria-labelledby="credential-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Credentials</p>
+        <h2 id="credential-title">Certified across the Microsoft analytics stack.</h2>
+      </div>
+      <div class="credential-list reveal">
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/1E85BD8F3F5A1547?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Fabric Analytics Engineer Associate</strong><small>Mar 2026 â†—</small></a>
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/6236FA10B22979C4?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Power BI Data Analyst Associate</strong><small>Jan 2026 â†—</small></a>
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/9B50A33F3C779F8F?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Azure Fundamentals</strong><small>Feb 2026 â†—</small></a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <p class="section-kicker">Available for the right team</p>
+      <h2 id="contact-title">Have a data problem worth solving?</h2>
+      <p>Iâ€™m exploring Data Engineering, Analytics Engineering, and SQL Developer opportunities.</p>
+      <div class="contact-actions">
+        <a class="button button-primary" href="mailto:sandurash19@gmail.com">Start a conversation <span aria-hidden="true">â†—</span></a>
+        <a class="text-link" href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer">GitHub â†—</a>
+        <a class="text-link" href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" rel="noreferrer">LinkedIn â†—</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Â© 2026 Sanduni G. Hewa</span><span>Built with Astro Â· Designed around evidence</span></footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</BaseLayout>
