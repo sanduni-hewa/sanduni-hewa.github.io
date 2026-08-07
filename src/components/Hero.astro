@@ -1,3 +1,7 @@
+---
+import TechLogo from './TechLogo.astro';
+---
+
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-copy">
@@ -25,14 +29,15 @@
       <div class="portrait-wrap">
         <img src="/images/profile_img.png" alt="Sanduni G. Hewa" width="520" height="520" />
       </div>
-      <div class="tech-node tech-sql"><strong>SQL</strong><span>Query</span></div>
-      <div class="tech-node tech-python"><strong>Python</strong><span>Engineer</span></div>
-      <div class="tech-node tech-fabric"><strong>Fabric</strong><span>Platform</span></div>
-      <div class="tech-node tech-databricks"><strong>Databricks</strong><span>Lakehouse</span></div>
-      <div class="tech-node tech-powerbi"><strong>Power BI</strong><span>Insights</span></div>
+      <div class="tech-node tech-sql"><TechLogo name="sql" label="SQL database" /><strong>SQL</strong></div>
+      <div class="tech-node tech-python"><TechLogo name="python" label="Python" /><strong>Python</strong></div>
+      <div class="tech-node tech-fabric"><TechLogo name="fabric" label="Microsoft Fabric" /><strong>Fabric</strong></div>
+      <div class="tech-node tech-databricks"><TechLogo name="databricks" label="Databricks" /><strong>Databricks</strong></div>
+      <div class="tech-node tech-powerbi"><TechLogo name="powerbi" label="Power BI" /><strong>Power BI</strong></div>
     </div>
     <div class="pipeline-flow" aria-label="Data workflow: sources, ingest, clean, transform, analyze, insights">
       <span>Sources</span><i></i><span>Ingest</span><i></i><span>Clean</span><i></i><span>Transform</span><i></i><span>Analyze</span><i></i><span>Insights</span>
     </div>
   </aside>
 </section>
+
