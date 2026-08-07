@@ -435,3 +435,32 @@ footer { display: flex; justify-content: space-between; gap: 30px; padding: 25px
 .technology-strip span:nth-child(2) .tech-logo,.technology-strip span:nth-child(5) .tech-logo{color:var(--cyan)}
 .technology-strip span:nth-child(3) .tech-logo,.technology-strip span:nth-child(6) .tech-logo,.technology-strip span:nth-child(7) .tech-logo{color:var(--pink)}
 
+/* Clean original-brand logo presentation (no glass cards). */
+.tech-logo img{display:block;width:100%;height:100%;object-fit:contain}
+.tech-node{
+  width:96px;
+  height:82px;
+  gap:7px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.tech-node .tech-logo{width:42px;height:42px;filter:none}
+.tech-node strong{
+  padding:3px 8px;
+  border-radius:999px;
+  background:rgba(5,7,12,.78);
+  color:#edf4ef;
+  font-size:10px;
+  font-weight:700;
+}
+.technology-strip .tech-logo{width:25px;height:25px;color:inherit}
+.technology-strip .logo-github img{padding:2px;border-radius:50%;background:#fff}
+
+@media (max-width:720px){
+  .tech-node{width:70px;height:66px}
+  .tech-node .tech-logo{width:34px;height:34px}
+  .tech-node strong{font-size:8px;padding:2px 6px}
+}
+
