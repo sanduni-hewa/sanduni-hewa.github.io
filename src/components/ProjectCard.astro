@@ -1,0 +1,25 @@
+---
+interface Props {
+  index: string;
+  title: string;
+  summary: string;
+  outcome: string;
+  tags: string[];
+  accent: string;
+}
+
+const { index, title, summary, outcome, tags, accent } = Astro.props;
+---
+
+<article class="project-card" style={`--project-accent:${accent}`}>
+  <div class="project-topline">
+    <span>{index}</span>
+    <span>Case study in progress</span>
+  </div>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <strong class="project-outcome">{outcome}</strong>
+  <ul class="tag-list" aria-label="Technologies used">
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+</article>
