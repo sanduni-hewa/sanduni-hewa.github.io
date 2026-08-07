@@ -6,28 +6,34 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = [
   {
-    index: '01 / DATABRICKS',
-    title: 'FMCG Data Engineering Platform',
-    summary: 'A multi-source medallion pipeline that standardizes transaction data into governed, BI-ready datasets with incremental ingestion and automated quality rules.',
-    outcome: '90K+ records standardized across multiple business datasets',
-    tags: ['Databricks', 'PySpark', 'SQL', 'AWS S3', 'Delta Lake'],
-    accent: '#b8ff5a'
-  },
-  {
-    index: '02 / MICROSOFT FABRIC',
+    index: '01 / MICROSOFT FABRIC',
     title: 'NYC Taxi Analytics Platform',
     summary: 'A metadata-driven Fabric pipeline and lakehouse model designed for scalable monthly ingestion, SQL transformations, and Power BI consumption.',
-    outcome: '13M+ records processed · presentation layer improved by 80%',
-    tags: ['Microsoft Fabric', 'T-SQL', 'Power BI', 'Lakehouse', 'Dataflows Gen2'],
-    accent: '#54e6ff'
+    outcome: '13M+ records · 80% faster processing',
+    tags: ['Microsoft Fabric', 'T-SQL', 'Power BI', 'Lakehouse'],
+    accent: '#a855f7',
+    visual: 'map' as const,
+    icon: 'DB'
+  },
+  {
+    index: '02 / DATABRICKS',
+    title: 'Transportation Data Platform',
+    summary: 'A declarative Spark pipeline with governed incremental ingestion, medallion transformations, and a maintainable production-oriented design.',
+    outcome: '356K+ records · 63% less pipeline code',
+    tags: ['Databricks', 'PySpark', 'Lakeflow SDP', 'AWS S3'],
+    accent: '#22d3ee',
+    visual: 'flow' as const,
+    icon: 'FX'
   },
   {
     index: '03 / LAKEFLOW',
-    title: 'Real-Time Transportation Pipeline',
-    summary: 'A declarative Spark pipeline with governed incremental ingestion, medallion transformations, and a maintainable production-oriented design.',
-    outcome: '356K+ records ingested · pipeline code reduced by 63%',
-    tags: ['Databricks', 'Lakeflow SDP', 'Unity Catalog', 'PySpark', 'AWS S3'],
-    accent: '#d9a7ff'
+    title: 'Mathnasium Automation & Analytics',
+    summary: 'A Python and Playwright workflow that automates operational tasks, validates student records, and supports reporting-ready analytics.',
+    outcome: '80% less manual effort · 100% validated records',
+    tags: ['Python', 'Playwright', 'REST API', 'Power BI'],
+    accent: '#f43f8d',
+    visual: 'dashboard' as const,
+    icon: 'MX'
   }
 ];
 
@@ -44,15 +50,27 @@ const capabilities = [
   <main id="main">
     <Hero />
 
+    <section class="metrics-band" aria-label="Selected engineering outcomes">
+      <article><span class="metric-icon">◉</span><div><strong>13M+</strong><b>Rows processed</b><small>NYC Taxi Platform</small></div></article>
+      <article><span class="metric-icon">↯</span><div><strong>80%</strong><b>Faster processing</b><small>Performance improvement</small></div></article>
+      <article><span class="metric-icon">⌁</span><div><strong>356K+</strong><b>Records managed</b><small>Transportation Platform</small></div></article>
+      <article><span class="metric-icon">◇</span><div><strong>100%</strong><b>Validated records</b><small>Quality controls</small></div></article>
+    </section>
+
     <section class="section work-section" id="work" aria-labelledby="work-title">
       <div class="section-heading reveal">
-        <p class="section-kicker">Selected systems</p>
-        <h2 id="work-title">Work with evidence,<br />not just tool lists.</h2>
-        <p>Each project is presented as an engineering decision: the problem, architecture, tradeoffs, reliability controls, and measurable outcome.</p>
+        <p class="section-kicker">Featured projects</p>
+        <h2 id="work-title">Solving real problems with data.</h2>
+        <p>Selected platforms spanning ingestion, transformation, modeling, automation, and decision-ready reporting.</p>
       </div>
       <div class="project-grid reveal">
         {projects.map((project) => <ProjectCard {...project} />)}
       </div>
+    </section>
+
+    <section class="technology-strip" aria-label="Technologies I work with">
+      <p>Technologies I work with</p>
+      <div><span>SQL</span><span>Python</span><span>PySpark</span><span>Databricks</span><span>Microsoft Fabric</span><span>Power BI</span><span>AWS S3</span><span>GitHub</span><span>Linux</span></div>
     </section>
 
     <section class="section capability-section" id="capabilities" aria-labelledby="capability-title">
