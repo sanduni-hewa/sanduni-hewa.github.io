@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import TechLogo from '../components/TechLogo.astro';
 
 const projects = [
   {
@@ -70,7 +71,17 @@ const capabilities = [
 
     <section class="technology-strip" aria-label="Technologies I work with">
       <p>Technologies I work with</p>
-      <div><span>SQL</span><span>Python</span><span>PySpark</span><span>Databricks</span><span>Microsoft Fabric</span><span>Power BI</span><span>AWS S3</span><span>GitHub</span><span>Linux</span></div>
+      <div>
+        <span><TechLogo name="sql" />SQL</span>
+        <span><TechLogo name="python" />Python</span>
+        <span><TechLogo name="spark" />PySpark</span>
+        <span><TechLogo name="databricks" />Databricks</span>
+        <span><TechLogo name="fabric" />Microsoft Fabric</span>
+        <span><TechLogo name="powerbi" />Power BI</span>
+        <span><TechLogo name="aws" />AWS S3</span>
+        <span><TechLogo name="github" />GitHub</span>
+        <span><TechLogo name="linux" />Linux</span>
+      </div>
     </section>
 
     <section class="section capability-section" id="capabilities" aria-labelledby="capability-title">
@@ -145,3 +156,4 @@ const capabilities = [
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
   </script>
 </BaseLayout>
+
