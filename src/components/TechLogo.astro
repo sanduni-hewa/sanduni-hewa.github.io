@@ -5,46 +5,51 @@ interface Props {
 }
 
 const { name, label } = Astro.props;
+
+const logos = {
+  sql: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg',
+    alt: 'Microsoft SQL Server'
+  },
+  python: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+    alt: 'Python'
+  },
+  fabric: {
+    src: 'https://cdn.simpleicons.org/microsoftfabric/5B5FC7',
+    alt: 'Microsoft Fabric'
+  },
+  databricks: {
+    src: 'https://cdn.simpleicons.org/databricks/FF3621',
+    alt: 'Databricks'
+  },
+  powerbi: {
+    src: 'https://cdn.simpleicons.org/powerbi/F2C811',
+    alt: 'Power BI'
+  },
+  spark: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg',
+    alt: 'Apache Spark'
+  },
+  aws: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+    alt: 'Amazon Web Services'
+  },
+  github: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+    alt: 'GitHub'
+  },
+  linux: {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+    alt: 'Linux'
+  }
+} as const;
+
+const logo = logos[name];
 ---
 
-<span class:list={['tech-logo', `logo-${name}`]} role={label ? 'img' : undefined} aria-label={label}>
-  {name === 'sql' && (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <ellipse cx="24" cy="10" rx="15" ry="6"></ellipse>
-      <path d="M9 10v10c0 3.3 6.7 6 15 6s15-2.7 15-6V10M9 20v10c0 3.3 6.7 6 15 6s15-2.7 15-6V20M9 30v8c0 3.3 6.7 6 15 6s15-2.7 15-6v-8"></path>
-    </svg>
-  )}
-  {name === 'python' && (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path class="logo-fill-one" d="M23 5c-9 0-9 4-9 9v5h18v3H10c-5 0-7 4-7 10s3 10 8 10h5v-7c0-5 4-8 9-8h13c4 0 7-3 7-7v-6c0-6-5-9-12-9H23Z"></path>
-      <circle cx="20" cy="11" r="2" fill="#061018"></circle>
-      <path class="logo-fill-two" d="M25 43c9 0 9-4 9-9v-5H16v-3h22c5 0 7-4 7-10S42 6 37 6h-5v7c0 5-4 8-9 8H10c-4 0-7 3-7 7v6c0 6 5 9 12 9h10Z" opacity=".9"></path>
-      <circle cx="28" cy="37" r="2" fill="#061018"></circle>
-    </svg>
-  )}
-  {name === 'fabric' && (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path class="logo-fill-one" d="M8 9h25l7 8-10 2-8 20H7l8-18Z"></path>
-      <path class="logo-fill-two" d="m15 21 12-7 13 3-10 10-8 12Z" opacity=".8"></path>
-    </svg>
-  )}
-  {name === 'databricks' && (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="m24 5 18 10-18 10L6 15 24 5Zm-15 17 15 8 15-8M9 30l15 8 15-8M9 38l15 8 15-8"></path>
-    </svg>
-  )}
-  {name === 'powerbi' && (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <rect x="7" y="25" width="7" height="17" rx="2"></rect>
-      <rect x="17" y="17" width="7" height="25" rx="2"></rect>
-      <rect x="27" y="9" width="7" height="33" rx="2"></rect>
-      <rect x="37" y="4" width="7" height="38" rx="2"></rect>
-    </svg>
-  )}
-  {name === 'spark' && <span class="logo-glyph" aria-hidden="true">✦</span>}
-  {name === 'aws' && <span class="logo-word" aria-hidden="true">aws</span>}
-  {name === 'github' && <span class="logo-word logo-gh" aria-hidden="true">GH</span>}
-  {name === 'linux' && <span class="logo-glyph" aria-hidden="true">◆</span>}
+<span class:list={['tech-logo', `logo-${name}`]}>
+  <img src={logo.src} alt={label ?? logo.alt} width="40" height="40" loading="lazy" />
 </span>
 
 
