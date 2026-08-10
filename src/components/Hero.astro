@@ -1,48 +1,42 @@
 ---
 import TechLogo from './TechLogo.astro';
+const technologies = [
+  ['sql','SQL'],['python','Python'],['spark','PySpark'],['databricks','Databricks'],['fabric','Microsoft Fabric'],['powerbi','Power BI']
+] as const;
 ---
-
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-copy">
-    <p class="availability-pill"><span></span> Available for opportunities</p>
-    <h1 id="hero-title">Turning data into</h1>
-    <p class="role-title">Insights <span>& Impact</span></p>
-    <p class="hero-intro">
-      I build scalable data pipelines and turn complex data into reliable, actionable insights with Microsoft Fabric, Databricks, PySpark, SQL, and Power BI.
-    </p>
+    <p class="eyebrow">Data Engineer & Analytics Developer</p>
+    <h1 id="hero-title">Turning Data into <span>Insights & Impact.</span></h1>
+    <p class="hero-intro">I build scalable data pipelines, analytics platforms, automations, and interactive dashboards that turn complex data into useful business insights.</p>
     <div class="hero-actions">
-      <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">→</span></a>
-      <a class="button button-secondary" href="/resume/">View résumé <span aria-hidden="true">↓</span></a>
+      <a class="button button-primary" href="#work">View My Work <span aria-hidden="true">→</span></a>
+      <a class="button button-secondary" href="#contact">Contact Me <span aria-hidden="true">→</span></a>
     </div>
-    <div class="social-links" aria-label="Connect with Sanduni">
-      <span>Connect with me</span>
-      <a href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-      <a href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-      <a href="mailto:sandurash19@gmail.com" aria-label="Email">@</a>
+    <div class="hero-technologies">
+      <p>Technologies I work with</p>
+      <div>
+        {technologies.map(([name,label]) => <span><TechLogo name={name} />{label}</span>)}
+      </div>
     </div>
   </div>
-  <aside class="hero-aside profile-card" aria-label="About Sanduni">
-    <div class="profile-card-top">
-      <div class="portrait-wrap">
-        <img src="/images/profile_img.png" alt="Sanduni G. Hewa" width="520" height="520" />
-      </div>
-      <div class="profile-intro">
-        <p>Hi, I’m</p>
-        <h2>Sanduni G. Hewa</h2>
-        <span>Data Engineer & Analytics Engineer</span>
-      </div>
+  <aside class="profile-card" aria-label="About Sanduni">
+    <div class="profile-identity">
+      <div class="portrait-wrap"><img src="/images/profile_img.png" alt="Sanduni G. Hewa" width="420" height="420" /></div>
+      <p>Hi, I’m</p><h2>Sanduni G. Hewa</h2><span>Data Engineer / Analytics Engineer</span>
     </div>
-    <ul class="profile-facts">
-      <li>Microsoft-certified across Fabric, Power BI, and Azure</li>
-      <li>Specialized in Databricks, PySpark, SQL, and lakehouse systems</li>
-      <li>Focused on reliable end-to-end data products and measurable outcomes</li>
-    </ul>
-    <div class="profile-connect">
-      <span>Let’s connect</span>
-      <a href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" rel="noreferrer">in</a>
-      <a href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer">GH</a>
-      <a href="mailto:sandurash19@gmail.com">@</a>
+    <div class="profile-details">
+      <ul>
+        <li>Data Engineering & Analytics</li>
+        <li>Microsoft Fabric, Databricks, PySpark, SQL & Power BI</li>
+        <li>Building end-to-end data solutions and automations</li>
+      </ul>
+      <div class="profile-connect">
+        <p>Let’s connect</p>
+        <a href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+        <a href="mailto:sandurash19@gmail.com" aria-label="Email">@</a>
+      </div>
     </div>
   </aside>
 </section>
