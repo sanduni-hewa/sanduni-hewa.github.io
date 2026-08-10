@@ -25,6 +25,11 @@ jobs:
         run: |
           mkdir -p public/images
           cp profile_img.png public/images/profile_img.png
+          cp Overview.jpeg public/images/overview.jpeg
+          cp Pipeline.jpeg public/images/pipeline.jpeg
+          cp Mathnasium_PCR_Tool.png public/images/mathnasium.png
+          cp microsoft-certified-associate-badge.svg public/images/associate-badge.svg
+          cp microsoft-certified-fundamentals-badge.svg public/images/fundamentals-badge.svg
       - uses: withastro/action@v3
         with:
           node-version: 24
@@ -39,3 +44,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
