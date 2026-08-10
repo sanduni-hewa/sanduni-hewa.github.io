@@ -5,155 +5,118 @@ import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import TechLogo from '../components/TechLogo.astro';
 
-const projects = [
-  {
-    index: '01 / MICROSOFT FABRIC',
-    title: 'NYC Taxi Analytics Platform',
-    summary: 'A metadata-driven Fabric pipeline and lakehouse model designed for scalable monthly ingestion, SQL transformations, and Power BI consumption.',
-    outcome: '13M+ records · 80% faster processing',
-    tags: ['Microsoft Fabric', 'T-SQL', 'Power BI', 'Lakehouse'],
-    accent: '#a855f7',
-    visual: 'map' as const,
-    icon: 'DB'
-  },
-  {
-    index: '02 / DATABRICKS',
-    title: 'Transportation Data Platform',
-    summary: 'A declarative Spark pipeline with governed incremental ingestion, medallion transformations, and a maintainable production-oriented design.',
-    outcome: '356K+ records · 63% less pipeline code',
-    tags: ['Databricks', 'PySpark', 'Lakeflow SDP', 'AWS S3'],
-    accent: '#22d3ee',
-    visual: 'flow' as const,
-    icon: 'FX'
-  },
-  {
-    index: '03 / LAKEFLOW',
-    title: 'Mathnasium Automation & Analytics',
-    summary: 'A Python and Playwright workflow that automates operational tasks, validates student records, and supports reporting-ready analytics.',
-    outcome: '80% less manual effort · 100% validated records',
-    tags: ['Python', 'Playwright', 'REST API', 'Power BI'],
-    accent: '#f43f8d',
-    visual: 'dashboard' as const,
-    icon: 'MX'
-  }
+const experience = [
+  { date:'Sep 2025 — Present', company:'Mathnasium', role:'IT Developer', mark:'M', copy:'Built browser and data automations that reduced repetitive administrative work by approximately 80%, with validation controls for reporting-ready records.' },
+  { date:'Jan — May 2025', company:'Lindenwood University', role:'Backend Developer', mark:'LU', copy:'Designed PostgreSQL schemas and optimized SQL transformations, improving query performance by approximately 40% for backend workflows.' },
+  { date:'2024 — 2025', company:'Independent Projects', role:'Data Engineer', mark:'DE', copy:'Designed Fabric and Databricks platforms spanning high-volume ingestion, lakehouse transformation, semantic modeling, and interactive analytics.' }
 ];
-
-const capabilities = [
-  { number: '01', title: 'Data platforms', copy: 'Microsoft Fabric, Databricks, Azure Data Factory, AWS S3, OneLake, lakehouses, warehouses, and Delta Lake.' },
-  { number: '02', title: 'Data engineering', copy: 'Python, PySpark, Spark SQL, orchestration, batch and incremental ingestion, medallion architecture, and data quality.' },
-  { number: '03', title: 'Analytics engineering', copy: 'T-SQL, dimensional modeling, star schemas, stored procedures, semantic models, DAX, Direct Lake, and Power BI.' },
-  { number: '04', title: 'Database engineering', copy: 'PostgreSQL, SQL Server, relational schema design, CTEs, window functions, query optimization, RBAC, and data integrity.' }
-];
+const skills = [
+  { title:'Data Engineering', items:[['sql','SQL'],['python','Python'],['spark','PySpark'],['databricks','Databricks'],['fabric','Microsoft Fabric']] },
+  { title:'Analytics & Visualization', items:[['powerbi','Power BI'],['spark','Tableau'],['sql','Excel']] },
+  { title:'Cloud', items:[['fabric','Azure'],['aws','AWS'],['aws','Amazon S3']] },
+  { title:'Programming', items:[['python','Python'],['sql','SQL'],['github','JavaScript'],['linux','R']] },
+  { title:'Tools', items:[['github','Git'],['github','GitHub'],['linux','Docker'],['linux','Linux']] }
+] as const;
 ---
-
-<BaseLayout title="Sanduni G. Hewa | Data Engineer & Analytics Engineer" description="Portfolio of Sanduni G. Hewa, a Microsoft-certified data engineer building scalable pipelines and analytics solutions with Fabric, Databricks, PySpark, SQL, and Power BI.">
+<BaseLayout title="Sanduni G. Hewa | Data Engineer & Analytics Engineer" description="Premium data engineering portfolio featuring Microsoft Fabric, Databricks, PySpark, SQL, and Power BI projects.">
   <Header />
   <main id="main">
     <Hero />
 
-    <section class="metrics-band" aria-label="Selected engineering outcomes">
-      <article><span class="metric-icon">◉</span><div><strong>13M+</strong><b>Rows processed</b><small>NYC Taxi Platform</small></div></article>
-      <article><span class="metric-icon">↯</span><div><strong>80%</strong><b>Faster processing</b><small>Performance improvement</small></div></article>
-      <article><span class="metric-icon">⌁</span><div><strong>356K+</strong><b>Records managed</b><small>Transportation Platform</small></div></article>
-      <article><span class="metric-icon">◇</span><div><strong>100%</strong><b>Validated records</b><small>Quality controls</small></div></article>
-    </section>
-
-    <section class="section work-section" id="work" aria-labelledby="work-title">
-      <div class="section-heading reveal">
-        <p class="section-kicker">Featured projects</p>
-        <h2 id="work-title">Solving real problems with data.</h2>
-        <p>Selected platforms spanning ingestion, transformation, modeling, automation, and decision-ready reporting.</p>
+    <section class="section experience-section reveal" id="experience">
+      <div class="section-heading">
+        <div><p class="section-kicker">Experience</p><h2>My professional journey</h2></div>
+        <a href="/resume/">View full experience →</a>
       </div>
-      <div class="project-grid reveal">
-        {projects.map((project) => <ProjectCard {...project} />)}
-      </div>
-    </section>
-
-    <section class="technology-strip" aria-label="Technologies I work with">
-      <p>Technologies I work with</p>
-      <div>
-        <span><TechLogo name="sql" />SQL</span>
-        <span><TechLogo name="python" />Python</span>
-        <span><TechLogo name="spark" />PySpark</span>
-        <span><TechLogo name="databricks" />Databricks</span>
-        <span><TechLogo name="fabric" />Microsoft Fabric</span>
-        <span><TechLogo name="powerbi" />Power BI</span>
-        <span><TechLogo name="aws" />AWS S3</span>
-        <span><TechLogo name="github" />GitHub</span>
-        <span><TechLogo name="linux" />Linux</span>
-      </div>
-    </section>
-
-    <section class="section capability-section" id="capabilities" aria-labelledby="capability-title">
-      <div class="section-heading reveal">
-        <p class="section-kicker">Capabilities</p>
-        <h2 id="capability-title">From ingestion to a trusted decision layer.</h2>
-      </div>
-      <div class="capability-grid reveal">
-        {capabilities.map((item) => (
+      <div class="timeline">
+        {experience.map((item) => (
           <article>
-            <span>{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.copy}</p>
+            <span class="timeline-node"></span>
+            <div class="company-mark">{item.mark}</div>
+            <div>
+              <h3>{item.company}</h3><strong>{item.role}</strong><time>{item.date}</time><p>{item.copy}</p>
+            </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading reveal">
-        <p class="section-kicker">Experience</p>
-        <h2 id="experience-title">Engineering improvements people can feel.</h2>
+    <section class="section work-section reveal" id="work">
+      <div class="section-heading">
+        <div><p class="section-kicker">Featured work</p><h2>Things I’ve built</h2></div>
+        <a href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer">View all projects →</a>
       </div>
-      <div class="timeline reveal">
-        <article>
-          <div><time>2025 — Present</time><span>Mathnasium · Dacula, GA</span></div>
-          <div><h3>IT Developer</h3><p>Built browser automation that reduced manual administrative effort by approximately 80%, designed a Python student-retention pipeline, and added ingestion quality checks that prevented downstream reporting errors.</p></div>
+      <div class="featured-layout">
+        <article class="featured-project">
+          <a class="featured-image" href="/projects/nyc-taxi/"><img src="/images/overview.jpeg" alt="NYC Taxi Analytics Platform dashboard overview" /></a>
+          <div class="featured-content">
+            <p class="project-label">Featured project</p>
+            <h3>NYC Taxi Analytics Platform</h3>
+            <p>End-to-end analytics engineering platform processing 13M+ taxi records and delivering interactive, decision-ready analytics.</p>
+            <div class="project-metrics">
+              <div><strong>13M+</strong><span>Records processed</span></div>
+              <div><strong>~80%</strong><span>Processing time reduction</span></div>
+              <div><strong>5x</strong><span>Faster insight delivery</span></div>
+            </div>
+            <ul class="project-tags"><li>Microsoft Fabric</li><li>PySpark</li><li>SQL</li><li>Power BI</li></ul>
+            <div class="project-actions">
+              <a class="button button-primary" href="/projects/nyc-taxi/">View Case Study →</a>
+              <a class="button button-secondary" href="/projects/nyc-taxi/#demo">▶ Watch Demo</a>
+            </div>
+          </div>
         </article>
-        <article>
-          <div><time>Jan — May 2025</time><span>Lindenwood University</span></div>
-          <div><h3>Backend Developer</h3><p>Designed PostgreSQL schemas and optimized transformations with CTEs and window functions, improving query performance by approximately 40% for real-time backend workflows.</p></div>
-        </article>
+        <div class="secondary-projects">
+          <ProjectCard title="Transportation Data Platform" summary="Governed incremental ingestion and medallion transformations using Databricks, PySpark, and Lakeflow." image="/images/pipeline.jpeg" imageAlt="Transportation data pipeline" />
+          <ProjectCard title="Mathnasium Automation" summary="Python and Playwright workflow for operational automation, retention analytics, and validated records." image="/images/mathnasium.png" imageAlt="Mathnasium automation interface" />
+        </div>
       </div>
     </section>
 
-    <section class="section credential-section" id="credentials" aria-labelledby="credential-title">
-      <div class="section-heading reveal">
-        <p class="section-kicker">Credentials</p>
-        <h2 id="credential-title">Certified across the Microsoft analytics stack.</h2>
-      </div>
-      <div class="credential-list reveal">
-        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/1E85BD8F3F5A1547?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Fabric Analytics Engineer Associate</strong><small>Mar 2026 ↗</small></a>
-        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/6236FA10B22979C4?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Power BI Data Analyst Associate</strong><small>Jan 2026 ↗</small></a>
-        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanduniGHewa-2723/9B50A33F3C779F8F?sharingId=9EED16835D751D03" target="_blank" rel="noreferrer"><span>Microsoft</span><strong>Azure Fundamentals</strong><small>Feb 2026 ↗</small></a>
+    <section class="section skills-section reveal" id="skills">
+      <div class="section-heading"><div><p class="section-kicker">Tech stack</p><h2>Tools I work with</h2></div></div>
+      <div class="skills-grid">
+        {skills.map((group) => (
+          <article><h3>{group.title}</h3><div>{group.items.map(([name,label]) => <span><TechLogo name={name} /><small>{label}</small></span>)}</div></article>
+        ))}
       </div>
     </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <p class="section-kicker">Available for the right team</p>
-      <h2 id="contact-title">Have a data problem worth solving?</h2>
-      <p>I’m exploring Data Engineering, Analytics Engineering, and SQL Developer opportunities.</p>
-      <div class="contact-actions">
-        <a class="button button-primary" href="mailto:sandurash19@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a class="text-link" href="https://linkedin.com/in/sanduni-galbokka-hewa" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+    <section class="section credentials-section reveal" id="credentials">
+      <div class="credentials-column">
+        <p class="section-kicker">Credentials</p><h2>Certifications</h2>
+        <div class="credential-list">
+          <article><img src="/images/associate-badge.svg" alt="" /><div><h3>Fabric Analytics Engineer Associate</h3><p>Microsoft · 2026</p></div></article>
+          <article><img src="/images/associate-badge.svg" alt="" /><div><h3>Power BI Data Analyst Associate</h3><p>Microsoft · 2026</p></div></article>
+          <article><img src="/images/fundamentals-badge.svg" alt="" /><div><h3>Microsoft Azure Fundamentals</h3><p>Microsoft · 2026</p></div></article>
+        </div>
       </div>
+      <div class="education-column">
+        <p class="section-kicker">Education</p><h2>Academic foundation</h2>
+        <div class="education-card"><span>2025</span><h3>B.S. Computer Science</h3><p>Minor in Data Science</p><strong>Lindenwood University</strong><p>GPA 3.9 · Academic honors</p></div>
+      </div>
+    </section>
+
+    <section class="section feedback-section reveal" id="feedback">
+      <div class="feedback-copy"><p class="section-kicker">What people say</p><h2>Built through collaboration.</h2><blockquote>Recommendations and verified professional feedback are available through my LinkedIn profile.</blockquote><p>LinkedIn recommendations</p><div class="carousel-dots"><i></i><i></i><i></i></div></div>
+      <div class="feedback-cta"><p>Worked with me?</p><h3>Your feedback helps tell the story behind the work.</h3><a class="button button-secondary" href="mailto:sandurash19@gmail.com?subject=Portfolio%20feedback">Leave Feedback →</a></div>
+    </section>
+
+    <section class="section contact-section reveal" id="contact">
+      <div class="contact-copy"><p class="section-kicker">Contact</p><h2>Let’s Build Something Great</h2><p>I’m always open to discussing data, interesting projects, collaborations, or new opportunities.</p>
+        <ul><li><span>Email</span><a href="mailto:sandurash19@gmail.com">sandurash19@gmail.com</a></li><li><span>LinkedIn</span><a href="https://linkedin.com/in/sanduni-galbokka-hewa">Sanduni G. Hewa</a></li><li><span>GitHub</span><a href="https://github.com/sanduni-hewa">sanduni-hewa</a></li><li><span>Location</span>Buford, Georgia</li></ul>
+      </div>
+      <form class="contact-form" action="mailto:sandurash19@gmail.com" method="post" enctype="text/plain">
+        <label>Name<input name="name" type="text" autocomplete="name" required /></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Message<textarea name="message" rows="6" required></textarea></label>
+        <button class="button button-primary" type="submit">Send Message →</button>
+      </form>
     </section>
   </main>
-
-  <footer><span>© 2026 Sanduni G. Hewa</span><span>Built with Astro · Designed around evidence</span></footer>
-
+  <footer><a class="brand" href="#top"><span>SG</span></a><span>© 2026 Sanduni G. Hewa</span><div><a href="https://linkedin.com/in/sanduni-galbokka-hewa">LinkedIn</a><a href="https://github.com/sanduni-hewa">GitHub</a><a href="mailto:sandurash19@gmail.com">Email</a></div></footer>
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if(entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), {threshold:.08});
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   </script>
 </BaseLayout>
 
