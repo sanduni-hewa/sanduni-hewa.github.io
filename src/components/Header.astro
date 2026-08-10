@@ -1,38 +1,35 @@
 <header class="site-header" data-header>
-  <a class="brand" href="#top" aria-label="Sanduni G. Hewa, home">
-    <span>SGH</span>
-    <small>Data systems</small>
-  </a>
-
+  <a class="brand" href="/#top" aria-label="Sanduni G. Hewa, home"><span>SG</span></a>
   <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
-    <span class="sr-only">Open navigation</span>
-    <span></span><span></span>
+    <span class="sr-only">Open navigation</span><span></span><span></span>
   </button>
-
   <nav id="site-nav" class="site-nav" aria-label="Primary navigation" data-nav>
-    <a href="#work">Work</a>
-    <a href="#capabilities">Capabilities</a>
-    <a href="#experience">Experience</a>
-    <a href="#credentials">Credentials</a>
-    <a href="#contact">Contact</a>
+    <a href="/#top">Home</a>
+    <a href="/#experience">Experience</a>
+    <a href="/#work">Projects</a>
+    <a href="/#skills">Skills</a>
+    <a href="/#credentials">Credentials</a>
+    <a href="/#contact">Contact</a>
   </nav>
+  <div class="header-actions">
+    <a class="resume-button" href="/resume/">Download Resume <span aria-hidden="true">↓</span></a>
+    <button class="theme-button" type="button" aria-label="Toggle color theme" data-theme-button>☼</button>
+  </div>
 </header>
-
 <script>
-  const button = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
   const nav = document.querySelector<HTMLElement>('[data-nav]');
-
-  const closeMenu = () => {
-    button?.setAttribute('aria-expanded', 'false');
-    nav?.classList.remove('is-open');
-  };
-
-  button?.addEventListener('click', () => {
-    const open = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!open));
+  const themeButton = document.querySelector<HTMLButtonElement>('[data-theme-button]');
+  const closeMenu = () => { menuButton?.setAttribute('aria-expanded','false'); nav?.classList.remove('is-open'); };
+  menuButton?.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!open));
     nav?.classList.toggle('is-open', !open);
   });
-
   nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-  window.addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
+  themeButton?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('soft-theme');
+    themeButton.textContent = document.documentElement.classList.contains('soft-theme') ? '☾' : '☼';
+  });
 </script>
+
