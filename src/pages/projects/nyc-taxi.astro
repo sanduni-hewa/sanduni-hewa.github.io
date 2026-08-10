@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+---
+<BaseLayout title="NYC Taxi Analytics Platform | Sanduni G. Hewa" description="Case study for a Microsoft Fabric analytics platform processing more than 13 million NYC taxi records.">
+  <Header />
+  <main id="main" class="case-study">
+    <header class="case-hero">
+      <a href="/#work">← Back to projects</a>
+      <p class="section-kicker">Microsoft Fabric · Analytics Engineering</p>
+      <h1>NYC Taxi Analytics Platform</h1>
+      <p>An end-to-end data platform that transforms more than 13 million taxi records into governed, performant, decision-ready analytics.</p>
+      <div class="case-metrics"><div><strong>13M+</strong><span>Records processed</span></div><div><strong>~80%</strong><span>Processing reduction</span></div><div><strong>30 sec</strong><span>Presentation-layer runtime</span></div></div>
+      <img src="/images/overview.jpeg" alt="NYC Taxi Analytics dashboard" />
+    </header>
+    <div class="case-content">
+      <section><p class="section-kicker">Project overview</p><h2>A scalable path from source files to trusted insights.</h2><p>The platform uses metadata-driven ingestion, lakehouse storage, SQL transformations, and a Power BI semantic layer to make high-volume transportation data reliable and useful.</p></section>
+      <section class="case-split"><div><p class="section-kicker">The problem</p><h2>High-volume data, slow presentation workflows.</h2></div><p>The source data arrived in repeated monthly batches and required consistent schema handling, validation, transformation, and analytics delivery. The original presentation process took approximately three minutes and created unnecessary maintenance overhead.</p></section>
+      <section><p class="section-kicker">Architecture</p><h2>Metadata-driven lakehouse architecture</h2><img src="/images/pipeline.jpeg" alt="NYC Taxi platform pipeline and architecture" /></section>
+      <section class="case-flow"><p class="section-kicker">Data flow</p><h2>From ingestion to insight</h2><ol><li><strong>Ingest</strong><span>Parameterized Fabric pipelines load monthly source files.</span></li><li><strong>Validate</strong><span>Schema and quality checks stop invalid records upstream.</span></li><li><strong>Transform</strong><span>SQL procedures create optimized analytical tables.</span></li><li><strong>Model</strong><span>A decision-ready semantic layer supports Power BI reporting.</span></li></ol></section>
+      <section class="case-split"><div><p class="section-kicker">Implementation</p><h2>Performance through deliberate engineering.</h2></div><div><p>Dataflow Gen2 transformations were replaced with optimized SQL stored procedures. Metadata-driven orchestration reduced repeated logic and made monthly ingestion easier to operate.</p><ul><li>Incremental, parameterized ingestion</li><li>Lakehouse-based storage and transformation</li><li>Reusable stored procedures</li><li>Validation and reconciliation controls</li></ul></div></section>
+      <section><p class="section-kicker">Technology stack</p><h2>Built on the Microsoft analytics stack</h2><ul class="case-tags"><li>Microsoft Fabric</li><li>OneLake</li><li>Fabric Pipelines</li><li>T-SQL</li><li>Power BI</li><li>Direct Lake</li></ul></section>
+      <section class="case-split"><div><p class="section-kicker">Challenges & decisions</p><h2>Choosing maintainability over repeated visual transformations.</h2></div><p>Moving presentation logic into tested SQL procedures improved visibility, reuse, and performance. The design favors explicit layers and measurable quality checks over hidden transformation steps.</p></section>
+      <section><p class="section-kicker">Results</p><h2>Faster, clearer, and ready to scale.</h2><div class="case-results"><article><strong>13M+</strong><p>NYC taxi records processed</p></article><article><strong>~80%</strong><p>Reduction in presentation processing time</p></article><article><strong>5x</strong><p>Faster delivery of analytical outputs</p></article></div></section>
+      <section><p class="section-kicker">Dashboard & visuals</p><h2>Decision-ready reporting</h2><img src="/images/overview.jpeg" alt="Power BI dashboard showing NYC taxi analytics" /></section>
+      <section id="demo" class="demo-section"><p class="section-kicker">Demo video</p><h2>See the platform in action</h2><p>A short walkthrough video will be added here. It will cover ingestion, transformation, validation, and the final report experience without exposing private data or credentials.</p><a class="button button-secondary" href="mailto:sandurash19@gmail.com?subject=NYC%20Taxi%20Platform%20demo">Request a walkthrough →</a></section>
+      <section class="case-repository"><div><p class="section-kicker">Repository</p><h2>Explore the engineering work.</h2></div><a class="button button-primary" href="https://github.com/sanduni-hewa" target="_blank" rel="noreferrer">View GitHub →</a></section>
+    </div>
+  </main>
+</BaseLayout>
+
