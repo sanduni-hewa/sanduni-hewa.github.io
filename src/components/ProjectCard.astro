@@ -1,28 +1,9 @@
 ---
-interface Props {
-  index: string;
-  title: string;
-  summary: string;
-  outcome: string;
-  tags: string[];
-  accent: string;
-  visual: 'map' | 'flow' | 'dashboard';
-  icon: string;
-}
-
-const { index, title, summary, outcome, tags, accent, visual, icon } = Astro.props;
+interface Props { title:string; summary:string; image:string; imageAlt:string; href?:string; }
+const { title, summary, image, imageAlt, href='#work' } = Astro.props;
 ---
-
-<article class="project-card" style={`--project-accent:${accent}`}>
-  <div class={`project-visual visual-${visual}`} aria-hidden="true">
-    <span class="visual-icon">{icon}</span>
-    <div class="visual-art"><i></i><i></i><i></i><i></i><i></i></div>
-  </div>
-  <div class="project-topline"><span>{index}</span><span>{outcome}</span></div>
-  <h3>{title}</h3>
-  <p>{summary}</p>
-  <ul class="tag-list" aria-label="Technologies used">
-    {tags.map((tag) => <li>{tag}</li>)}
-  </ul>
-  <span class="project-link">View case study <span aria-hidden="true">→</span></span>
+<article class="small-project">
+  <div><h3>{title}</h3><p>{summary}</p><a href={href} aria-label={`View ${title}`}>→</a></div>
+  <img src={image} alt={imageAlt} loading="lazy" />
 </article>
+
