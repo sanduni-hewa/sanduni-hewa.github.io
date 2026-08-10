@@ -1,0 +1,47 @@
+name: Deploy Astro site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare existing portfolio assets
+        run: |
+          mkdir -p public/images
+          cp profile_img.png public/images/profile_img.png
+          cp Overview.jpeg public/images/overview.jpeg
+          cp Pipeline.jpeg public/images/pipeline.jpeg
+          cp Mathnasium_PCR_Tool.png public/images/mathnasium.png
+          cp microsoft-certified-associate-badge.svg public/images/associate-badge.svg
+          cp microsoft-certified-fundamentals-badge.svg public/images/fundamentals-badge.svg
+      - uses: withastro/action@v3
+        with:
+          node-version: 24
+  deploy:
+    if: github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
