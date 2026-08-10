@@ -127,3 +127,163 @@ footer{display:flex;justify-content:space-between;gap:30px;padding:24px clamp(20
   .contact-actions{align-items:flex-start;flex-direction:column}footer{flex-direction:column}
 }
 
+/* Spacious dashboard-style concept based on the selected reference. */
+body{
+  background:
+    radial-gradient(circle at 76% 8%,rgba(64,90,255,.12),transparent 25%),
+    radial-gradient(circle at 58% 5%,rgba(132,69,255,.09),transparent 22%),
+    #05070d;
+}
+.site-header{
+  top:18px;
+  left:clamp(18px,3vw,44px);
+  right:clamp(18px,3vw,44px);
+  min-height:76px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:rgba(6,9,16,.9);
+}
+.brand span{color:#7b72ff;font-size:25px}
+.site-nav a:hover,.site-nav a:focus-visible{color:#7b72ff}
+main{display:flex;flex-direction:column}
+.hero{
+  order:1;
+  width:min(1500px,calc(100% - 72px));
+  min-height:auto;
+  margin:0 auto;
+  padding:155px 0 58px;
+  grid-template-columns:minmax(0,.95fr) minmax(500px,1.05fr);
+  gap:clamp(70px,9vw,150px);
+  background:transparent;
+}
+.hero::before,.hero-grid{display:none}
+.availability-pill{
+  padding:8px 13px;
+  border:1px solid #20283a;
+  border-radius:999px;
+  background:#101521;
+}
+.availability-pill span{background:#42e8a6;box-shadow:0 0 10px rgba(66,232,166,.5)}
+.hero h1{font-size:clamp(42px,4.7vw,72px)}
+.role-title{
+  margin:8px 0 26px;
+  font-size:clamp(43px,5vw,78px);
+  background:linear-gradient(100deg,#ae46ff,#5675ff 65%,#37bfff);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.role-title span{color:transparent;-webkit-text-stroke:0;background:inherit;background-clip:text;-webkit-background-clip:text}
+.hero-intro{max-width:620px;line-height:1.8}
+.button{border-radius:7px;min-width:155px}
+.button-primary{background:linear-gradient(100deg,#853eff,#3c6fff);border-color:#745aff;color:white}
+.button-secondary{border-color:#30394e}
+.social-links{display:none}
+.profile-card{
+  max-width:none;
+  padding:46px;
+  border:1px solid #303a52;
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(24,19,54,.95),rgba(12,17,30,.96));
+  box-shadow:0 24px 80px rgba(0,0,0,.28),inset 0 0 80px rgba(79,76,255,.06);
+}
+.profile-card-top{display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center}
+.profile-card .portrait-wrap{position:relative;inset:auto;width:170px;height:170px;border:2px solid #7569ff;border-radius:50%;overflow:hidden}
+.profile-card .portrait-wrap::after{display:none}
+.profile-card .portrait-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:none}
+.profile-intro p{margin:0;color:#747cff}.profile-intro h2{margin:5px 0 2px;font-size:clamp(28px,3vw,43px);letter-spacing:-.04em}.profile-intro span{color:#a4afc2}
+.profile-facts{display:grid;gap:15px;margin:34px 0;padding:0;list-style:none;color:#aab4c7}
+.profile-facts li{position:relative;padding-left:24px}.profile-facts li::before{content:'✦';position:absolute;left:0;color:#6f78ff}
+.profile-connect{display:flex;align-items:center;justify-content:flex-end;gap:10px;color:#aab4c7;font-size:13px}
+.profile-connect>span{margin-right:8px}.profile-connect a{display:grid;place-items:center;width:38px;height:38px;border:1px solid #30394e;border-radius:6px;text-decoration:none}
+.profile-connect a:hover{border-color:#7569ff;color:#8c83ff}
+.technology-strip{
+  order:2;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.technology-strip>div{gap:12px}.technology-strip>div>span{padding:10px 14px;border:1px solid #20283a;border-radius:7px;background:#0b0f18}
+.technology-strip>p{color:#8f9bad}
+.metrics-band{
+  order:4;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:#080c14;
+  overflow:hidden;
+}
+.experience-section{
+  order:3;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  padding:42px 34px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:#080c14;
+}
+.experience-section .section-heading{margin-bottom:30px}.experience-section .section-heading h2{font-size:30px}.timeline{display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #39486a}
+.timeline article{display:block;padding:34px 14px 10px;border-bottom:0}.timeline h3{margin-top:18px;font-size:19px}.timeline p{font-size:13px}
+.work-section{
+  order:5;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  padding:46px 34px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:#080c14;
+}
+.work-section .section-heading{margin-bottom:35px}.work-section .section-heading h2{font-size:35px}
+.project-grid{gap:20px;background:transparent;border:0}
+.project-card{min-height:470px;border:1px solid #20283a;border-radius:10px;background:linear-gradient(135deg,#101524,#090d16)}
+.project-card::before{width:2px;background:#7c55ff}.project-card:hover{background:#111728;border-color:#495678}
+.project-link,.project-topline span:last-child{color:#8190ff}
+.capability-section{
+  order:6;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  padding:46px 34px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:#080c14;
+}
+.capability-section .section-heading{margin-bottom:30px}.capability-section .section-heading h2{font-size:35px}
+.capability-grid{gap:14px;border:0}.capability-grid article,.capability-grid article:not(:first-child){padding:26px;border:1px solid #20283a;border-radius:8px;background:#0c111c}.capability-grid span{color:#7f83ff}.capability-grid h3{margin-top:28px}
+.credential-section{
+  order:7;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 42px;
+  padding:46px 34px;
+  border:1px solid #20283a;
+  border-radius:12px;
+  background:#080c14;
+}
+.credential-section .section-heading{margin-bottom:30px}.credential-section .section-heading h2{font-size:35px}
+.contact-section{
+  order:8;
+  width:min(1500px,calc(100% - 72px));
+  margin:0 auto 60px;
+  padding:65px;
+  border:1px solid #303a52;
+  border-radius:12px;
+  background:radial-gradient(circle at 90% 50%,rgba(72,57,255,.22),transparent 35%),#0a0e18;
+  color:#e8ecf4;
+}
+.contact-section .section-kicker{color:#7f83ff}.contact-section .button-primary{background:linear-gradient(100deg,#853eff,#3c6fff);border-color:#745aff;color:white}
+footer{order:9;border-top:1px solid #20283a;background:#05070d}
+@media(max-width:1050px){
+  .hero{grid-template-columns:1fr;width:min(900px,calc(100% - 48px));gap:48px}
+  .technology-strip,.metrics-band,.experience-section,.work-section,.capability-section,.credential-section,.contact-section{width:calc(100% - 48px)}
+}
+@media(max-width:720px){
+  .site-header{top:10px;left:10px;right:10px}
+  .hero{width:calc(100% - 32px);padding-top:120px}
+  .profile-card{padding:25px}.profile-card-top{grid-template-columns:100px 1fr;gap:18px}.profile-card .portrait-wrap{width:100px;height:100px}.profile-facts{font-size:13px}.profile-connect{justify-content:flex-start;flex-wrap:wrap}
+  .technology-strip,.metrics-band,.experience-section,.work-section,.capability-section,.credential-section,.contact-section{width:calc(100% - 32px)}
+  .experience-section,.work-section,.capability-section,.credential-section{padding:34px 20px}.timeline{grid-template-columns:1fr;gap:0}
+  .contact-section{padding:45px 24px}
+}
+
